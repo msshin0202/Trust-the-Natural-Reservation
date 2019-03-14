@@ -10,7 +10,7 @@ locahost:8888
 4. Every time you make changes to php files under api folder within the project directory, make sure to copy 
 modified php files and replace the old one in htdocs/api
 
-5. Navigate to frontend/src on terminal then run npm start or ng serve. This runs the frontend part of the project
+5. Navigate to frontend/src on terminal. First run npm install then run npm start or ng serve. This runs the frontend part of the project
 at localhost:4200. If app is paused or an error triggered abrupt pause and the port's not freed, make sure to 
 free it first. The .htaccess file written for us only recognizes localhost:4200 as valid source of incoming http request, 
 and will otherwise throw CORS (Cross Origin Resource Sharing) error if you run frontend on a different port.
