@@ -1,0 +1,49 @@
+Once you git clone the repo, do the following:
+
+1. Set Apache port on MAMP, XAMPP etc to 8888. This is important since our api calls are made to 
+locahost:8888
+
+2. On MAMP or XAMPP, make sure to set document root to MAMP/htdocs or XAMPP/htdocs
+
+3. Copy api folder (contains backend logic) to htdocs of XAMPP or MAMP
+
+4. Every time you make changes to php files under api folder within the project directory, make sure to copy 
+modified php files and replace the old one in htdocs/api
+
+5. Navigate to frontend/src on terminal then run npm start or ng serve. This runs the frontend part of the project
+at localhost:4200. If app is paused or an error triggered abrupt pause and the port's not freed, make sure to 
+free it first. The .htaccess file written for us only recognizes localhost:4200 as valid source of incoming http request, 
+and will otherwise throw CORS (Cross Origin Resource Sharing) error if you run frontend on a different port.
+On macOS the command should be 
+
+kill $(sudo lsof -t -i:4200)
+
+6. Right now, once you navigate to ./frontend/src/app, you will see that files are divided into different folders
+(components, directives, services, classes (because I didn't know how better to classify some of these 
+defined classes)). If this project directory doesn't seem right, feel free to discuss. Of course, things like
+this is subject to change. It's just that I thought our project does need some kind of organization though. I've
+already created ~20 files and so if we were all creating components/services etc and dumping them all into 
+app folder, we will have massive headache in terms of finding the files to fix or locating where things are in 
+general.
+
+7. I think convention is to pull stylesheets out and put them together under one folder, but too lazy to restructure
+them that way :/
+
+8. If website needs to be routed to another page, make sure to include the routes under app.module.ts. 
+I'm not sure how to configure routes once we try to route away from current page after having already routed
+away from main app.component, but we can figure that out as we work on the project and read angular documentation.
+
+9. I will integrate Alice's php files and components soon. After creating the 
+respective components/classes/services etc I think best place to place the component is on custlanding.component.html
+since the list is something the customers are interested in seeing
+
+10. Right now, the authentication doesn't work properly. I haven't written php/sql commands to reference the user 
+table. Instead, its simply checking if id = admin and password = admin (I created an authentication process
+for customer users so far so it's funny to have admin as id and password I know but I was following a tutorial
+for this lol). So if the inputs match then it redirects to customer user landingpage (custlanding component). What
+you are seeing (the view) is custlanding.component.html. And any logic that should be applied (for 
+dynamic element styling using Angular lifecycle hooks or passing data around) in custlanding.component.ts for 
+example. Sorry I haven't got far enough to implement a robust authentication process but will work on it.
+
+11. Once we make an .sql file, we should first open mysql from MAMP/XAMPP, and call 
+source \<sql file path>\<.sql file name>;
