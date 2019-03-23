@@ -29,7 +29,9 @@ CREATE TABLE confirmations (
 CREATE TABLE customers (
   pnumber varchar(10) PRIMARY KEY,
   fname varchar(20) DEFAULT NULL,
-  lname varchar(20) DEFAULT NULL
+  lname varchar(20) DEFAULT NULL,
+  email varchar(50) DEFAULT NULL,
+  password varchar(20) DEFAULT NULL
 );
 CREATE TABLE employees (
   eid int(11) PRIMARY KEY,
@@ -37,7 +39,9 @@ CREATE TABLE employees (
   lname varchar(20) DEFAULT NULL,
   gender varchar(6) DEFAULT NULL,
   role varchar(20) DEFAULT NULL,
-  address varchar(30) DEFAULT NULL
+  address varchar(30) DEFAULT NULL,
+  email varchar(50) DEFAULT NULL,
+  password varchar(20) DEFAULT NULL
 );
 CREATE TABLE pays (
   bid int(11) NOT NULL,
