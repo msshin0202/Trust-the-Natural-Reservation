@@ -1,18 +1,18 @@
-INSERT INTO Customer VALUES('7788712157', 'Matthew', 'Shin');
-INSERT INTO Customer VALUES('7782347896', 'Jad', 'AppleSeed');
-INSERT INTO Customer VALUES('6048761023', 'Henry', 'James');
-INSERT INTO Customer VALUES('2509871320', 'James', 'Potter');
-INSERT INTO Customer VALUES('2139557819', 'Garry', 'Longbottom');
-INSERT INTO Customer VALUES('5872334861', 'Harry', 'Potter');
-INSERT INTO Customer VALUES('8575813045', 'Tom', 'Riddle');
-INSERT INTO Customer VALUES('6674486201', 'Ron', 'Weasley');
-INSERT INTO Customer VALUES('9586249135', 'Harmonie', 'Granger');
-INSERT INTO Customer VALUES('7574823004', 'John', 'Smith');
-INSERT INTO Customer VALUES('9676743920', 'John', 'Smith');
-INSERT INTO Customer VALUES('7713846471', 'Clark', 'Kent');
-INSERT INTO Customer VALUES('5757034581', 'Louise', 'Lane');
-INSERT INTO Customer VALUES('1010283210', 'Mary', 'Jane');
-INSERT INTO Customer VALUES('4589982341', 'Michael', 'Bishop');
+INSERT INTO Customer VALUES('7788712157', 'Matthew', 'Shin', 'gomor@yahoo.ca', 'KEArFAkx');
+INSERT INTO Customer VALUES('7782347896', 'Jad', 'AppleSeed', 'kludge@icloud.com', 'cmY8ECek');
+INSERT INTO Customer VALUES('6048761023', 'Henry', 'James', 'ghost@aol.com', 'mYk3pV2s');
+INSERT INTO Customer VALUES('2509871320', 'James', 'Potter', 'jamespotter@gmail.com', '7ZsYbdG5');
+INSERT INTO Customer VALUES('2139557819', 'Garry', 'Longbottom', 'garylongbottom@gmail.com', 'sqjur3DL');
+INSERT INTO Customer VALUES('5872334861', 'Harry', 'Potter', 'harrypotter@gmail.com', 'TAxNPZbp');
+INSERT INTO Customer VALUES('8575813045', 'Tom', 'Riddle', 'lordvoldemort@gmail.com', 'pUBw74e3');
+INSERT INTO Customer VALUES('6674486201', 'Ron', 'Weasley', 'ronweasley@gmail.com', '7zqEgx63');
+INSERT INTO Customer VALUES('9586249135', 'Harmonie', 'Granger', 'harmoniegranger@gmail.com', 'znUQZ22C');
+INSERT INTO Customer VALUES('7574823004', 'John', 'Smith', 'johnsmith@gmail.com', 'M2kqw8MV');
+INSERT INTO Customer VALUES('9676743920', 'John', 'Smith', 'johnsmithwastaken@gmail.com', 'yAwqaNhf');
+INSERT INTO Customer VALUES('7713846471', 'Clark', 'Kent', 'superman@yahoo.ca', '9GSSuDC3');
+INSERT INTO Customer VALUES('5757034581', 'Louise', 'Lane', 'louiselane@dailyplanet.com', 'rZkjXfNP');
+INSERT INTO Customer VALUES('1010283210', 'Mary', 'Jane', 'maryjane@spiderman.com', 'KCVymuUp');
+INSERT INTO Customer VALUES('4589982341', 'Michael', 'Bishop', 'michaelbishop@hotmail.com', 'U9Xbu5KE');
 
 /* Reserved but not checked-in rooms */
 INSERT INTO Reservation_Made_By VALUES(1, 7788712157, 20190104, 20190109);
@@ -77,16 +77,16 @@ INSERT INTO Transaction VALUES(999, 'Cash', 20181231);
    and the customers currently checked in have not yet paid */
 
 /* Male gender = 1, Female gender = 0 */
-INSERT INTO Employee VALUES(1, 'George', 'Harrington', 1, 'Manager', '2215 Robson Street');
-INSERT INTO Employee VALUES(2, 'Robert', 'Mack', 1, 'Supervisor', '1611 St George Street');
-INSERT INTO Employee VALUES(3, 'Richard', 'White', 1, 'Receiptionist', '1123 Robson St');
-INSERT INTO Employee VALUES(4, 'Jessica', 'Perez', 0, 'Receiptionist', '2912 Robson St');
-INSERT INTO Employee VALUES(5, 'Betty', 'Alderson', 0, 'Supervisor', '3124 Wesbrook Mall');
-INSERT INTO Employee VALUES(6, 'Caroline', 'Pearson', 0, 'Maid', '9981 Agronomy Road');
-INSERT INTO Employee VALUES(7, 'Matthew', 'Green', 1, 'Maid', '12516 Charles Street');
-INSERT INTO Employee VALUES(8, 'Sean', 'Johnston', 1, 'Manager', '3308 Ash St');
-INSERT INTO Employee VALUES(9, 'Robert', 'Hector', 1, 'Maid', '12356 W Broadway');
-INSERT INTO Employee VALUES(10, 'Deloris', 'Stocking', 0, 'Maid', '275 28th Ave');
+INSERT INTO Employee VALUES(1, 'George', 'Harrington', 1, 'Manager', '2215 Robson Street', 'gerogeharrington@naturalreservation.com','jHapcnUH');
+INSERT INTO Employee VALUES(2, 'Robert', 'Mack', 1, 'Supervisor', '1611 St George Street', 'robermack@naturalreservation.com', 'mLtz64mb');
+INSERT INTO Employee VALUES(3, 'Richard', 'White', 1, 'Receiptionist', '1123 Robson St', 'richardwhite@naturalreservation.com', 'AAWV77Gv');
+INSERT INTO Employee VALUES(4, 'Jessica', 'Perez', 0, 'Receiptionist', '2912 Robson St', 'jessicaperez@naturalreservation.com', 'hN9fPgfm');
+INSERT INTO Employee VALUES(5, 'Betty', 'Alderson', 0, 'Supervisor', '3124 Wesbrook Mall', 'bettyalderson@naturalreservation.com', 'BqkcpAfG');
+INSERT INTO Employee VALUES(6, 'Caroline', 'Pearson', 0, 'Maid', '9981 Agronomy Road', 'carolinepearson@naturalreservation.com', 'pcrCcJ5S');
+INSERT INTO Employee VALUES(7, 'Matthew', 'Green', 1, 'Maid', '12516 Charles Street', 'matthewgreen@naturalreservation.com', 'CugGFGNaaC');
+INSERT INTO Employee VALUES(8, 'Sean', 'Johnston', 1, 'Manager', '3308 Ash St', 'seanjohnston@naturalreservation.com', 'Ds6n6P7NX6');
+INSERT INTO Employee VALUES(9, 'Robert', 'Hector', 1, 'Maid', '12356 W Broadway', 'roberthector@naturalreservation.com', 'BFEfpRpFgR');
+INSERT INTO Employee VALUES(10, 'Deloris', 'Stocking', 0, 'Maid', '275 28th Ave', 'delorisstocking@naturalreservation.com', '6UuSpQvkp8');
 
 INSERT INTO Employee_Assigned_to_Room VALUES(6, 202);
 INSERT INTO Employee_Assigned_to_Room VALUES(7, 204);

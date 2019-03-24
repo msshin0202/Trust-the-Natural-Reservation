@@ -4,6 +4,8 @@ CREATE TABLE Customer
 ( phoneNumber VARCHAR(10) NOT NULL,
   firstName VARCHAR(20),
   lastName VARCHAR(20),
+  email VARCHAR(50),
+  password VARCHAR(20),
   PRIMARY KEY (phoneNumber) );
 
 CREATE TABLE Reservation_Made_By
@@ -61,6 +63,8 @@ CREATE TABLE Employee
   gender BIT,
   role VARCHAR(20),
   address VARCHAR(100),
+  email VARCHAR(50),
+  password VARCHAR(20),
   PRIMARY KEY (employeeID) );
 
 CREATE TABLE Employee_Assigned_to_Room
