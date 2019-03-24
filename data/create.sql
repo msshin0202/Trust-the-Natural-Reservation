@@ -13,8 +13,8 @@ CREATE TABLE assignments (
 CREATE TABLE bills (
   bid int(11) PRIMARY KEY,
   snumber int(11) DEFAULT NULL,
-  pnumber varchar(10) DEFAULT NULL,
-  FOREIGN KEY (pnumber) REFERENCES customers (pnumber) ON UPDATE CASCADE,
+  phonenum varchar(10) DEFAULT NULL,
+  FOREIGN KEY (phonenum) REFERENCES customers (phonenum) ON UPDATE CASCADE,
   FOREIGN KEY (snumber) REFERENCES services (snumber) ON UPDATE CASCADE,
 );
 CREATE TABLE confirmations (
@@ -27,7 +27,7 @@ CREATE TABLE confirmations (
   FOREIGN KEY (roomnum) REFERENCES stays (roomnum)
 );
 CREATE TABLE customers (
-  pnumber varchar(10) PRIMARY KEY,
+  phonenum varchar(10) PRIMARY KEY,
   fname varchar(20) DEFAULT NULL,
   lname varchar(20) DEFAULT NULL,
   email varchar(50) DEFAULT NULL,
@@ -46,18 +46,18 @@ CREATE TABLE employees (
 CREATE TABLE pays (
   bid int(11) NOT NULL,
   tid int(11) NOT NULL,
-  pnumber varchar(10) NOT NULL,
+  phonenum varchar(10) NOT NULL,
   PRIMARY KEY (bid,tid),
   FOREIGN KEY (bid) REFERENCES bills (bid) ON DELETE CASCADE,
   FOREIGN KEY (tid) REFERENCES transactions (tid) ON DELETE CASCADE,
-  FOREIGN KEY (pnumber) REFERENCES customers (pnumber) ON DELETE CASCADE
+  FOREIGN KEY (phonenum) REFERENCES customers (phonenum) ON DELETE CASCADE
 );
 CREATE TABLE reservations (
   rid int(11) PRIMARY KEY,
-  pnumber varchar(10) DEFAULT NULL,
+  phonenum varchar(10) NOT NULL,
   checkOutDate date DEFAULT NULL,
   checkInDate date DEFAULT NULL,
-  FOREIGN KEY (pnumber) REFERENCES customers (pnumber) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (phonenum) REFERENCES customers (phonenum) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE TABLE services (
   snumber int(11) PRIMARY KEY,
@@ -66,12 +66,9 @@ CREATE TABLE services (
 );
 CREATE TABLE stays (
   roomnum int(11) PRIMARY KEY,
-  nobeds int(11) DEFAULT NULL,
-  cleanliness int(11) DEFAULT NULL,
-  duration int(11) DEFAULT NULL,
-  price float DEFAULT NULL,
-  pnumber varchar(10) NOT NULL,
-  FOREIGN KEY (pnumber) REFERENCES customers (pnumber) ON DELETE CASCADE
+  phonenum varchar(10) NOT NULL,
+  FOREIGN KEY (roomnum) REFERENCES vacancy (roomnum) ON DELETE CASCADE,
+  FOREIGN KEY (phonenum) REFERENCES customers (phonenum) ON DELETE CASCADE
 );
 CREATE TABLE transactions (
   tid int(11) PRIMARY KEY,
@@ -89,7 +86,7 @@ CREATE TABLE vacancy (
 CREATE TABLE vehicles (
   color varchar(10) NOT NULL,
   model varchar(10) NOT NULL,
-  pnumber varchar(10) NOT NULL,
-  PRIMARY KEY (color, model, pnumber),
-  FOREIGN KEY (pnumber) REFERENCES customers (pnumber) ON DELETE CASCADE
+  phonenum varchar(10) NOT NULL,
+  PRIMARY KEY (color, model, phonenum),
+  FOREIGN KEY (phonenum) REFERENCES customers (phonenum) ON DELETE CASCADE
 );
