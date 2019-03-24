@@ -1,0 +1,93 @@
+USE natural_reservation;
+
+CREATE TABLE Customer
+( phoneNumber VARCHAR(10) NOT NULL,
+  firstName VARCHAR(20),
+  lastName VARCHAR(20),
+  PRIMARY KEY (phoneNumber) );
+
+CREATE TABLE Reservation_Made_By
+( reservationNumber INT NOT NULL,
+  phoneNumber VARCHAR(10),
+  checkInDate DATE,
+  checkOutDate DATE,
+  PRIMARY KEY (reservationNumber),
+  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE
+                                                             ON UPDATE CASCADE );
+CREATE TABLE Vacant_Room
+( roomNumber INT NOT NULL,
+  reservationNumber INT,
+  numberOfBeds INT,
+  cleanliness BIT,
+  price INT,
+  PRIMARY KEY (roomNumber),
+  FOREIGN KEY (reservationNumber) REFERENCES Reservation_Made_By(reservationNumber) ON DELETE SET NULL );
+
+CREATE TABLE Stays_In_Occupied_Room
+( roomNumber INT NOT NULL,
+  numberOfBeds INT,
+  cleanliness INT,
+  checkInDate DATE,
+  checkOutDate DATE,
+  price INT,
+  phoneNumber VARCHAR(10),
+  PRIMARY KEY (roomNumber),
+  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE );
+
+CREATE TABLE Bill
+( bid INT NOT NULL,
+  amount INT,
+  PRIMARY KEY (bid) );
+
+CREATE TABLE Transaction
+( tid INT NOT NULL,
+  transactionType VARCHAR(11),
+  dateOfTransaction DATE,
+  PRIMARY KEY (tid) );
+
+CREATE TABLE Pays
+( bid INT NOT NULL,
+  tid INT NOT NULL,
+  phoneNumber VARCHAR(10),
+  PRIMARY KEY (bid, tid),
+  FOREIGN KEY (bid) REFERENCES Bill(bid) ON DELETE CASCADE,
+  FOREIGN KEY (tid) REFERENCES Transaction(tid) ON DELETE CASCADE,
+  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE );
+
+CREATE TABLE Employee
+( employeeID INT NOT NULL,
+  firstName VARCHAR(20),
+  lastName VARCHAR(20),
+  gender BIT,
+  role VARCHAR(20),
+  address VARCHAR(100),
+  PRIMARY KEY (employeeID) );
+
+CREATE TABLE Employee_Assigned_to_Room
+( employeeID INT NOT NULL,
+  roomNumber INT,
+  PRIMARY KEY (employeeID, roomNumber),
+  FOREIGN KEY (employeeID) REFERENCES Employee(employeeID) ON DELETE CASCADE,
+  FOREIGN KEY (roomNumber) REFERENCES Stays_In_Occupied_Room(roomNumber) ON DELETE CASCADE );
+
+CREATE TABLE Creates_Hotel_Agreement
+( agreementNumber INT NOT NULL,
+  reservationNumber INT,
+  PRIMARY KEY (agreementNumber),
+  FOREIGN KEY (reservationNumber) REFERENCES Reservation_Made_By(reservationNumber) ON DELETE CASCADE );
+
+CREATE TABLE Associated_With
+( bid INT NOT NULL,
+  agreementNumber INT,
+  roomNumber INT,
+  PRIMARY KEY (bid, agreementNumber, roomNumber),
+  FOREIGN KEY (bid) REFERENCES Bill(bid),
+  FOREIGN KEY (agreementNumber) REFERENCES Creates_Hotel_Agreement(agreementNumber) ON DELETE CASCADE,
+  FOREIGN KEY (roomNumber) REFERENCES Stays_In_Occupied_Room(roomNumber) ON DELETE CASCADE );
+
+CREATE TABLE Vehicle
+( colour VARCHAR(10) NOT NULL,
+  model VARCHAR (10),
+  phoneNumber VARCHAR(10),
+  PRIMARY KEY (colour, model, phoneNumber),
+  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE );

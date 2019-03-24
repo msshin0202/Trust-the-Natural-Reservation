@@ -1,0 +1,12 @@
+DROP TABLE Vacant_Room;
+DROP TABLE Reservation_Made_By;
+DROP TABLE Stays_In_Occupied_Room;
+DROP TABLE Customer;
+DROP TABLE Pays;
+DROP TABLE Transaction;
+DROP TABLE Employee;
+DROP TABLE Bill;
+DROP TABLE Employee_Assigned_to_Room;
+DROP TABLE Creates_Hotel_Agreement;
+DROP TABLE Associated_With;
+DROP TABLE Vehicle;
