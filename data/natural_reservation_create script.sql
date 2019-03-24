@@ -67,7 +67,7 @@ CREATE TABLE Employee_Assigned_to_Room
   roomNumber INT,
   PRIMARY KEY (employeeID, roomNumber),
   FOREIGN KEY (employeeID) REFERENCES Employee(employeeID) ON DELETE CASCADE,
-  FOREIGN KEY (roomNumber) REFERENCES Rooom(roomNumber) ON DELETE CASCADE );
+  FOREIGN KEY (roomNumber) REFERENCES Room(roomNumber) ON DELETE CASCADE );
 
 CREATE TABLE Creates_Hotel_Agreement
 ( agreementNumber INT NOT NULL,
