@@ -16,7 +16,7 @@ CREATE TABLE Reservation_Made_By
   PRIMARY KEY (reservationNumber),
   FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE
                                                              ON UPDATE CASCADE );
-CREATE TABLE Vacant_Room
+CREATE TABLE Room
 ( roomNumber INT NOT NULL,
   reservationNumber INT,
   numberOfBeds INT,
@@ -25,13 +25,8 @@ CREATE TABLE Vacant_Room
   PRIMARY KEY (roomNumber),
   FOREIGN KEY (reservationNumber) REFERENCES Reservation_Made_By(reservationNumber) ON DELETE SET NULL );
 
-CREATE TABLE Stays_In_Occupied_Room
+CREATE TABLE Stays
 ( roomNumber INT NOT NULL,
-  numberOfBeds INT,
-  cleanliness INT,
-  checkInDate DATE,
-  checkOutDate DATE,
-  price INT,
   phoneNumber VARCHAR(10),
   PRIMARY KEY (roomNumber),
   FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE );
@@ -72,7 +67,7 @@ CREATE TABLE Employee_Assigned_to_Room
   roomNumber INT,
   PRIMARY KEY (employeeID, roomNumber),
   FOREIGN KEY (employeeID) REFERENCES Employee(employeeID) ON DELETE CASCADE,
-  FOREIGN KEY (roomNumber) REFERENCES Stays_In_Occupied_Room(roomNumber) ON DELETE CASCADE );
+  FOREIGN KEY (roomNumber) REFERENCES Stays(roomNumber) ON DELETE CASCADE );
 
 CREATE TABLE Creates_Hotel_Agreement
 ( agreementNumber INT NOT NULL,
@@ -87,7 +82,7 @@ CREATE TABLE Associated_With
   PRIMARY KEY (bid, agreementNumber, roomNumber),
   FOREIGN KEY (bid) REFERENCES Bill(bid),
   FOREIGN KEY (agreementNumber) REFERENCES Creates_Hotel_Agreement(agreementNumber) ON DELETE CASCADE,
-  FOREIGN KEY (roomNumber) REFERENCES Stays_In_Occupied_Room(roomNumber) ON DELETE CASCADE );
+  FOREIGN KEY (roomNumber) REFERENCES Stays(roomNumber) ON DELETE CASCADE );
 
 CREATE TABLE Vehicle
 ( colour VARCHAR(10) NOT NULL,

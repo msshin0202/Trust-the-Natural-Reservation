@@ -1,6 +1,6 @@
-DROP TABLE Vacant_Room;
+DROP TABLE Room;
 DROP TABLE Reservation_Made_By;
-DROP TABLE Stays_In_Occupied_Room;
+DROP TABLE Stays;
 DROP TABLE Customer;
 DROP TABLE Pays;
 DROP TABLE Transaction;
