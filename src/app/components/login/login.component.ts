@@ -15,18 +15,18 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(event) {
-    event.preventDefault(); 
+    event.preventDefault();
     const target = event.target;
-    const username = target.querySelector('#username').value; 
-    const password = target.querySelector('#password').value; 
+    const username = target.querySelector('#username').value;
+    const password = target.querySelector('#password').value;
 
     this.Auth.getUserDetails(username, password).subscribe(data => {
       if(data.success) {
         this.router.navigate(['cust']);
         this.Auth.setLoggedIn(true);
       } else {
-        window.alert('data.message');
-      } 
+        window.alert('Invalid Username or Password');
+      }
     });
 
     console.log(username, password);
