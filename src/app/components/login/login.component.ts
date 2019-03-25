@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
         window.alert('Invalid Username or Password');
       }
     });
-
     console.log(username, password);
   }
 }
