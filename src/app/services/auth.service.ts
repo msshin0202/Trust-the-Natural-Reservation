@@ -10,7 +10,7 @@ interface myData {
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl = 'http://localhost:8888/api';
+  baseUrl = 'http://localhost:3000/api';
   private loggedInStatus = false ;
 
   constructor(private http: HttpClient) { }
