@@ -12,6 +12,10 @@ import { AuthService } from './services/auth.service';
 import { CustUserService } from './services/cust-user.service';
 import { SliderComponent } from './components/slider/slider.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AvailableComponent } from './components/available/available.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { RoomComponent } from './components/room/room.component';
+import { RoomsComponent } from './components/rooms/rooms.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     CustlandingComponent,
     SliderComponent,
+    AvailableComponent,
+    ConfirmationComponent,
+    RoomComponent,
+    RoomsComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,27 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       {
         path: '',
         component: HomeComponent
-      }
+      }, 
+      {
+        path: 'rooms',
+        component: RoomsComponent
+      },
+      {
+        path: 'available/:id',
+        component: RoomComponent
+      },
+      {
+        path: 'available',
+        component: AvailableComponent
+      },
+      {
+        path: 'confirmation',
+        component: ConfirmationComponent
+      },
+      // {
+      //   path: '**',
+      //   component: PagenotfoundComponent
+      // }
     ])
   ],
   providers: [AuthService, CustUserService, AuthGuard],
