@@ -3,26 +3,26 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-elogin',
+  templateUrl: './elogin.component.html',
+  styleUrls: ['./elogin.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class EloginComponent implements OnInit {
 
   constructor(private Auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  eloginUser(event) {
+  eloginUser(event){
     event.preventDefault();
     const target = event.target;
-    const username = target.querySelector('#username').value;
-    const password = target.querySelector('#password').value;
+    const username = target.querySelector('#eusername').value;
+    const password = target.querySelector('#epassword').value;
 
     this.Auth.getUserDetails(username, password).subscribe(data => {
       if(data.success) {
-        this.router.navigate(['cust']);
+        this.router.navigate(['employee']);
         this.Auth.setLoggedIn(true);
       } else {
         window.alert('Invalid Username or Password');
@@ -31,4 +31,5 @@ export class LoginComponent implements OnInit {
 
     console.log(username, password);
   }
+
 }
