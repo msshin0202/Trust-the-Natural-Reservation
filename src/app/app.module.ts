@@ -16,8 +16,8 @@ import { AvailableComponent } from './components/available/available.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { RoomComponent } from './components/room/room.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
-import { EloginComponent } from './elogin/elogin.component';
-import { EmplandingComponent } from './emplanding/emplanding.component';
+import { EloginComponent } from './components/elogin/elogin.component';
+import { EmplandingComponent } from './components/emplanding/emplanding.component';
 
 @NgModule({
   declarations: [
