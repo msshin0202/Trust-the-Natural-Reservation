@@ -13,7 +13,7 @@ h4 {
     display: block;
     margin: 50px auto;
 }
-#submit {
+[type="submit"] {
     padding: 5px 10px;
     color: white;
     border-radius: 10px;
@@ -23,6 +23,7 @@ h4 {
     display: block;
     margin: auto;
     font-size: larger;
+    cursor: pointer;
 }
 .cardbox {
     display: inline-block;

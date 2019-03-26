@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
       if(data.success) {
         this.router.navigate(['cust']);
         this.Auth.setLoggedIn(true);
+        // localStorage.setItem('email', data.email);
       } else {
         window.alert('Invalid Username or Password');
       }

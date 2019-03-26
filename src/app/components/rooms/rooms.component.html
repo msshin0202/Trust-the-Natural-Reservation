@@ -13,10 +13,11 @@
 <div [hidden]="!toggle">
   <div class="cardbox" *ngFor="let item of rooms">
     <div class="card">
-      <p>Room number: {{item.roomnum}}</p>
-      <p>No. of beds: {{item.nobeds}}</p>
+      <p>Room number: {{item.roomNumber}}</p>
+      <p>No. of beds: {{item.numberOfBeds}}</p>
       <p>${{item.price}}</p>
-      <a [routerLink]="item.roomnum">See detail</a>
+      <!-- <a [routerLink]="item.roomNumber">See detail</a> -->
+      <button (click)="reserve($event)" type="submit">Make reservation</button>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomsService } from '../../services/rooms.service';
-import { Room } from '../../services/room';
 import { Router, NavigationExtras } from '@angular/router';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-rooms',
@@ -12,9 +12,10 @@ import { Router, NavigationExtras } from '@angular/router';
 export class RoomsComponent implements OnInit {
   baseUrl = 'http://localhost:3000/api';
   rooms = [];
+  date = '';
   toggle = false;
         
-  constructor(private roomsService: RoomsService, private router: Router) {
+  constructor(private roomsService: RoomsService, private reservationService: ReservationService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -26,14 +27,8 @@ export class RoomsComponent implements OnInit {
     event.preventDefault(); 
     const target = event.target;
     const date = target.querySelector('#check-in').value;
+    this.date = date;
     this.roomsService.getAvailableRooms(date).subscribe(data => {
-      // const ne: NavigationExtras = {
-      //   state: {
-      //     rooms: data
-      //   }
-      // };
-      // this.router.navigate(['available'], ne);
-      // console.log(data);
       this.rooms = data.data;
       localStorage.removeItem('array');
       localStorage.setItem('array', JSON.stringify(this.rooms));
@@ -42,6 +37,32 @@ export class RoomsComponent implements OnInit {
       this.toggle = true;
     });
   }
+
+  reserve(event): void {
+    event.preventDefault(); 
+    // const target = event.target;
+    // const date = target.querySelector('#check-in').value;
+    // const fname = target.querySelector('#fname').value;
+    // const lname = target.querySelector('#lname').value;
+    // const phonenum = target.querySelector('#phonenum').value;
+    const param = {
+      date: this.date,
+      email: localStorage.getItem('email')
+      // fname: fname,
+      // lname: lname,
+      // phonenum: phonenum
+    }
+    this.reservationService.makeReservation(param).subscribe(data => {
+      const ne: NavigationExtras = {
+        state: {
+          data: data
+        }
+      };
+      console.log(data)
+      this.router.navigate(['confirmation'], ne);
+    });
+  }
+
   myFunction(event): void {
     var x = document.getElementById("snackbar");
     x.className = "show";
