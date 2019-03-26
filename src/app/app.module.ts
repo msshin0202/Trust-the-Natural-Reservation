@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
+import { CloginComponent } from './components/clogin/clogin.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { CustlandingComponent } from './components/custlanding/custlanding.component';
@@ -31,6 +32,7 @@ import { PayComponent } from './components/pay/pay.component';
     RoomComponent,
     RoomsComponent,
     PayComponent,
+    CloginComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,10 @@ import { PayComponent } from './components/pay/pay.component';
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'clogin',
+        component: CloginComponent
       },
       {
         path: 'logout',

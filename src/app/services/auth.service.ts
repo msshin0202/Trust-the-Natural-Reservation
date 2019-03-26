@@ -23,6 +23,13 @@ export class AuthService {
     return this.loggedInStatus;
   }
 
+  getCustomerDetails(username, password) {
+    return this.http.post<myData>(`${this.baseUrl}/clogin`, {
+      username,
+      password
+    })
+  }
+
   getUserDetails(username, password) {
     return this.http.post<myData>(`${this.baseUrl}/auth`, {
       username,
