@@ -15,7 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { RoomComponent } from './components/room/room.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
-import { ViewProfileComponent } from './view.profile/view.profile.component';
+import { ViewProfileComponent } from './components/view.profile/view.profile.component';
 
 @NgModule({
   declarations: [
