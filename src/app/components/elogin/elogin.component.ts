@@ -14,22 +14,20 @@ export class EloginComponent implements OnInit {
   ngOnInit() {
   }
 
-  eloginUser(event){
+  loginEmployee(event) {
     event.preventDefault();
     const target = event.target;
-    const username = target.querySelector('#eusername').value;
-    const password = target.querySelector('#epassword').value;
+    const username = target.querySelector('#username').value;
+    const password = target.querySelector('#password').value;
 
-    this.Auth.getUserDetails(username, password).subscribe(data => {
+    this.Auth.getEmployeeDetails(username, password).subscribe(data => {
       if(data.success) {
         this.router.navigate(['employee']);
         this.Auth.setLoggedIn(true);
       } else {
-        window.alert('Invalid Username or Password');
+        window.alert(data.message);
       }
     });
-
-    console.log(username, password);
   }
 
 }

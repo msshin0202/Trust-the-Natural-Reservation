@@ -15,12 +15,12 @@ function login($email, $password)
     try {
         $conn = connect();
         $escapedEmail = $conn->real_escape_string($email);
-        $sql = "SELECT c.email, c.password FROM Customer c WHERE c.email LIKE '{$escapedEmail}'";
+        $sql = "SELECT e.email, e.password FROM Employee e WHERE e.email LIKE '{$escapedEmail}'";
         $mysqliResult = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($mysqliResult);
         if ($row == null) {
             $loginResult[RESULT_SUCCESS_KEY] = false;
-            $loginResult[RESULT_MESSAGE_KEY] = "Customer information does not exist. Please sign up.";
+            $loginResult[RESULT_MESSAGE_KEY] = "Employee information does not exist. Please sign up.";
         } elseif ($password == $row[POST_PASSWORD_KEY]) {
             session_start();
             $_SESSION[SESSION_USER_KEY] = $email;
@@ -28,7 +28,7 @@ function login($email, $password)
             $loginResult[RESULT_MESSAGE_KEY] = "Login Successful!";
         } else {
             $loginResult[RESULT_SUCCESS_KEY] = false;
-            $loginResult[RESULT_MESSAGE_KEY] = "Customer has failed to log in. Please try again.";
+            $loginResult[RESULT_MESSAGE_KEY] = "Employee has failed to log in. Please try again.";
         }
     } catch (Exception $e) {
         $loginResult[RESULT_SUCCESS_KEY] = false;
@@ -43,7 +43,7 @@ function login($email, $password)
 $_POST = json_decode(file_get_contents('php://input'), true);
 $result = array();
 $result[RESULT_SUCCESS_KEY] = false;
-$result[RESULT_MESSAGE_KEY] = "Customer has failed to log in. Please try again.";
+$result[RESULT_MESSAGE_KEY] = "Employee has failed to log in. Please try again.";
 
 if (isset($_POST) && !empty($_POST)) {
     $result = login($_POST["username"], $_POST["password"]);
