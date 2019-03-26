@@ -5,14 +5,14 @@
       <input type="date" autocomplete="off" id="check-in">
     </div>
     <div>
-      <button type="submit" id="submit">Submit</button>
+      <button (click)="myFunction($event)" type="submit" id="submit">Submit</button>
     </div>
   </div>
 </form>
-<div [hidden]="!rooms">
-  <h2>A list of available rooms</h2>
-  <div class="rooms" *ngFor="let item of rooms">
-    <div class="room">
+<div id="snackbar">{{rooms.length}} rooms are available</div>
+<div [hidden]="!toggle">
+  <div class="cardbox" *ngFor="let item of rooms">
+    <div class="card">
       <p>Room number: {{item.roomnum}}</p>
       <p>No. of beds: {{item.nobeds}}</p>
       <p>${{item.price}}</p>

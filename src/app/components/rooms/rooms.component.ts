@@ -12,13 +12,14 @@ import { Router, NavigationExtras } from '@angular/router';
 export class RoomsComponent implements OnInit {
   baseUrl = 'http://localhost:3000/api';
   rooms = [];
-  error = '';
-  success = '';
+  toggle = false;
         
   constructor(private roomsService: RoomsService, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.rooms = JSON.parse(localStorage.getItem('array'));
+    this.toggle = localStorage.getItem('toggle') == 'true';
   }
 
   getRooms(event): void {
@@ -32,10 +33,18 @@ export class RoomsComponent implements OnInit {
       //   }
       // };
       // this.router.navigate(['available'], ne);
-      console.log(data);
+      // console.log(data);
       this.rooms = data.data;
+      localStorage.removeItem('array');
+      localStorage.setItem('array', JSON.stringify(this.rooms));
+      localStorage.removeItem('toggle');
+      localStorage.setItem('toggle', 'true');
+      this.toggle = true;
     });
-
-    console.log(date);
+  }
+  myFunction(event): void {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
 }
