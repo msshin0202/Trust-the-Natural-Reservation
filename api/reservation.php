@@ -14,9 +14,8 @@ $lname = $params['lname'];
 $phonenum = $params['phonenum'];
 $rid = mt_rand(1000, 10000);
 
-$sql = "INSERT INTO customers VALUES ('{$phonenum}', '{$fname}', '{$lname}', NULL, NULL)";
 if ($result = mysqli_query($con, $sql)) {
-  $sql = "INSERT INTO reservations VALUES ({$rid}, '{$phonenum}', '{$checkIn->format('Y-m-d')}', NULL)";
+  $sql = "INSERT INTO Reservation_made_by VALUES ({$rid}, '{$phonenum}', '{$checkIn->format('Y-m-d')}', NULL)";
   if ($result = mysqli_query($con, $sql)) {
     $reservation['rid'] = $rid;
   } else {

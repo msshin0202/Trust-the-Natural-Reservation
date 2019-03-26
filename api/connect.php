@@ -2,7 +2,7 @@
     function connect() {
         $dbhost = "localhost";
         $dbuser = "root";
-        $dbpass = "n39JKmvul2fJejWB";
+        $dbpass = "root";
         $db = "hotel";
         $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or
         die("Connect failed: %s\n". $conn -> error);

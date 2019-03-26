@@ -9,22 +9,22 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 
 $date = new DateTime($_POST['date']);
 $cr = 0;
-$sql = "SELECT roomnum, rid, nobeds, cleanliness, price FROM vacancy";
+$sql = "SELECT roomNumber, reservationNumber, numberOfBeds, cleanliness, price FROM Room";
 if ($result = mysqli_query($con, $sql)) {
   while($row = mysqli_fetch_assoc($result)) {
-    $rooms[$cr]['roomnum'] = $row['roomnum'];
-    $rooms[$cr]['nobeds']  = $row['nobeds'];
+    $rooms[$cr]['roomNumber'] = $row['roomNumber'];
+    $rooms[$cr]['numberOfBeds']  = $row['numberOfBeds'];
     $rooms[$cr]['price']   = $row['price'];
     $cr++;
   }
 }
-$sql = "SELECT v.roomnum, v.nobeds, v.cleanliness, v.price, r.checkOutDate FROM vacancy v, stays s, reservations r WHERE r.rid = v.rid AND v.roomnum = s.roomnum";
+$sql = "SELECT v.roomNumber, v.numberOfBeds, v.cleanliness, v.price, r.checkOutDate FROM Room v, stays s, Reservation_made_by r WHERE r.reservationNumber = v.reservationNumber AND v.roomNumber = s.roomNumber";
 if ($result = mysqli_query($con, $sql)) {
   while($row = mysqli_fetch_assoc($result)) {
     $checkOutDate = new DateTime($row['checkOutDate']);
     if ($checkOutDate < $date) {
-      $rooms[$cr]['roomnum'] = $row['roomnum'];
-      $rooms[$cr]['nobeds']  = $row['nobeds'];
+      $rooms[$cr]['roomNumber'] = $row['roomNumber'];
+      $rooms[$cr]['numberOfBeds']  = $row['numberOfBeds'];
       $rooms[$cr]['price']   = $row['price'];
       $cr++;
     }
