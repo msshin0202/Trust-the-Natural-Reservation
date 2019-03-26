@@ -1,6 +1,6 @@
 <?php
 
-require '../connect.php';
+require './connect.php';
 
 $rooms = [];
 $con = connect();
@@ -18,7 +18,7 @@ if ($result = mysqli_query($con, $sql)) {
     $cr++;
   }
 }
-$sql = "SELECT v.roomNumber, v.numberOfBeds, v.cleanliness, v.price, r.checkOutDate FROM Room v, stays s, Reservation_made_by r WHERE r.reservationNumber = v.reservationNumber AND v.roomNumber = s.roomNumber";
+$sql = "SELECT r.roomNumber, r.numberOfBeds, r.cleanliness, r.price, rv.checkOutDate FROM Room r, Stays s, Reservation_Made_By rv WHERE rv.reservationNumber = r.reservationNumber AND r.roomNumber = s.roomNumber";
 if ($result = mysqli_query($con, $sql)) {
   while($row = mysqli_fetch_assoc($result)) {
     $checkOutDate = new DateTime($row['checkOutDate']);

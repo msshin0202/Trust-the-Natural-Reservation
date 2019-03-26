@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';  
+import { HttpClient } from '@angular/common/http';
 
 interface myData {
   success: boolean,
-  message: string,
-  email: string
+  message: string
 }
 
 @Injectable({
@@ -22,6 +21,20 @@ export class AuthService {
 
   get isLoggedIn() {
     return this.loggedInStatus;
+  }
+
+  getCustomerDetails(username, password) {
+    return this.http.post<myData>(`${this.baseUrl}/clogin`, {
+      username,
+      password
+    })
+  }
+
+  getEmployeeDetails(username, password) {
+    return this.http.post<myData>(`${this.baseUrl}/elogin`, {
+      username,
+      password
+    })
   }
 
   getUserDetails(username, password) {

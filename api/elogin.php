@@ -1,6 +1,6 @@
 <?php
 
-require '../connect.php';
+require './connect.php';
 
 const RESULT_SUCCESS_KEY = "success";
 const RESULT_MESSAGE_KEY = "message";
@@ -15,7 +15,7 @@ function login($email, $password)
     try {
         $conn = connect();
         $escapedEmail = $conn->real_escape_string($email);
-        $sql = "SELECT e.email, e.password FROM Employees e WHERE e.email LIKE '{$escapedEmail}'";
+        $sql = "SELECT e.email, e.password FROM Employee e WHERE e.email LIKE '{$escapedEmail}'";
         $mysqliResult = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($mysqliResult);
         if ($row == null) {

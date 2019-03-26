@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
+import { CloginComponent } from './components/clogin/clogin.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { CustlandingComponent } from './components/custlanding/custlanding.component';
@@ -12,9 +13,13 @@ import { AuthService } from './services/auth.service';
 import { CustUserService } from './services/cust-user.service';
 import { SliderComponent } from './components/slider/slider.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { AvailableComponent } from './components/available/available.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+// import { RoomComponent } from './components/room/room.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
-import { ViewProfileComponent } from './components/view.profile/view.profile.component';
+import { EloginComponent } from './components/elogin/elogin.component';
+import { EmplandingComponent } from './components/emplanding/emplanding.component';
+import { PayComponent } from './components/pay/pay.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,11 @@ import { ViewProfileComponent } from './components/view.profile/view.profile.com
     SliderComponent,
     ConfirmationComponent,
     RoomsComponent,
-    ViewProfileComponent,
+    PayComponent,
+    CloginComponent,
+    EloginComponent,
+    EmplandingComponent
+
   ],
   imports: [
     BrowserModule,
@@ -36,6 +45,10 @@ import { ViewProfileComponent } from './components/view.profile/view.profile.com
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'clogin',
+        component: CloginComponent
       },
       {
         path: 'logout',
@@ -49,7 +62,7 @@ import { ViewProfileComponent } from './components/view.profile/view.profile.com
       {
         path: '',
         component: HomeComponent
-      }, 
+      },
       {
         path: 'rooms',
         component: RoomsComponent
@@ -59,9 +72,18 @@ import { ViewProfileComponent } from './components/view.profile/view.profile.com
         component: ConfirmationComponent
       },
       {
-        path: 'profile/:id',
-        component: ViewProfileComponent
-      }
+        path: 'pay',
+        component: PayComponent
+      },
+      {
+      path: 'elogin',
+      component: EloginComponent
+    },
+    {
+      path: 'employee',
+      component: EmplandingComponent
+    }
+
       // {
       //   path: '**',
       //   component: PagenotfoundComponent

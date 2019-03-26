@@ -3,32 +3,31 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-elogin',
+  templateUrl: './elogin.component.html',
+  styleUrls: ['./elogin.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class EloginComponent implements OnInit {
 
   constructor(private Auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  loginUser(event) {
+  loginEmployee(event) {
     event.preventDefault();
     const target = event.target;
     const username = target.querySelector('#username').value;
     const password = target.querySelector('#password').value;
 
-    this.Auth.getUserDetails(username, password).subscribe(data => {
+    this.Auth.getEmployeeDetails(username, password).subscribe(data => {
       if(data.success) {
-        this.router.navigate(['cust']);
+        this.router.navigate(['employee']);
         this.Auth.setLoggedIn(true);
-        // localStorage.setItem('email', data.email);
       } else {
-        window.alert('Invalid Username or Password');
+        window.alert(data.message);
       }
     });
-    console.log(username, password);
   }
+
 }
