@@ -1,9 +1,11 @@
 <div>
   <h2>A list of available rooms</h2>
-  <div *ngFor="let item of rooms" style="display:inline-block;min-width:calc(33.33% - 20px);margin:10px;padding:10px;box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);">
-    <p>Room number: {{item.roomnum}}</p>
-    <p>No. of beds: {{item.nobeds}}</p>
-    <p>${{item.price}}</p>
-    <a [routerLink]="item.roomnum">See detail</a>
+  <div class="rooms" *ngFor="let item of rooms">
+    <div class="room">
+      <p>Room number: {{item.roomnum}}</p>
+      <p>No. of beds: {{item.nobeds}}</p>
+      <p>${{item.price}}</p>
+      <a [routerLink]="item.roomnum">See detail</a>
+    </div>
   </div>
 </div>
