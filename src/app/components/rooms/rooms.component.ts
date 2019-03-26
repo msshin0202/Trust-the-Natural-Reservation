@@ -11,7 +11,7 @@ import { Router, NavigationExtras } from '@angular/router';
 
 export class RoomsComponent implements OnInit {
   baseUrl = 'http://localhost:3000/api';
-  rooms: Room[];
+  rooms = [];
   error = '';
   success = '';
         
@@ -26,12 +26,14 @@ export class RoomsComponent implements OnInit {
     const target = event.target;
     const date = target.querySelector('#check-in').value;
     this.roomsService.getAvailableRooms(date).subscribe(data => {
-      const ne: NavigationExtras = {
-        state: {
-          rooms: data
-        }
-      };
-      this.router.navigate(['available'], ne);
+      // const ne: NavigationExtras = {
+      //   state: {
+      //     rooms: data
+      //   }
+      // };
+      // this.router.navigate(['available'], ne);
+      console.log(data);
+      this.rooms = data.data;
     });
 
     console.log(date);

@@ -9,3 +9,14 @@
     </div>
   </div>
 </form>
+<div [hidden]="!rooms">
+  <h2>A list of available rooms</h2>
+  <div class="rooms" *ngFor="let item of rooms">
+    <div class="room">
+      <p>Room number: {{item.roomnum}}</p>
+      <p>No. of beds: {{item.nobeds}}</p>
+      <p>${{item.price}}</p>
+      <a [routerLink]="item.roomnum">See detail</a>
+    </div>
+  </div>
+</div>
