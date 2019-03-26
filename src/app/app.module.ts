@@ -83,7 +83,6 @@ import { PayComponent } from './components/pay/pay.component';
       path: 'employee',
       component: EmplandingComponent
     }
-
       // {
       //   path: '**',
       //   component: PagenotfoundComponent

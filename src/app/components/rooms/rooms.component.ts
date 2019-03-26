@@ -12,7 +12,7 @@ import { ReservationService } from 'src/app/services/reservation.service';
 export class RoomsComponent implements OnInit {
   baseUrl = 'http://localhost:3000/api';
   rooms = [];
-  date = '';
+  date = {};
   toggle = false;
         
   constructor(private roomsService: RoomsService, private reservationService: ReservationService, private router: Router) {
@@ -26,7 +26,12 @@ export class RoomsComponent implements OnInit {
   getRooms(event): void {
     event.preventDefault(); 
     const target = event.target;
-    const date = target.querySelector('#check-in').value;
+    const checkInDate = target.querySelector('#check-in').value;
+    const checkOutDate = target.querySelector('#check-out').value;
+    const date = {
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate
+    }
     this.date = date;
     this.roomsService.getAvailableRooms(date).subscribe(data => {
       this.rooms = data.data;
@@ -39,18 +44,9 @@ export class RoomsComponent implements OnInit {
   }
 
   reserve(event): void {
-    event.preventDefault(); 
-    // const target = event.target;
-    // const date = target.querySelector('#check-in').value;
-    // const fname = target.querySelector('#fname').value;
-    // const lname = target.querySelector('#lname').value;
-    // const phonenum = target.querySelector('#phonenum').value;
+    event.preventDefault();
     const param = {
-      date: this.date,
-      email: localStorage.getItem('email')
-      // fname: fname,
-      // lname: lname,
-      // phonenum: phonenum
+      date: this.date
     }
     this.reservationService.makeReservation(param).subscribe(data => {
       const ne: NavigationExtras = {

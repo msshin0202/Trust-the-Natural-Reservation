@@ -90,3 +90,5 @@ CREATE TABLE Vehicle
   phoneNumber VARCHAR(10),
   PRIMARY KEY (colour, model, phoneNumber),
   FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE );
+
+CREATE VIEW Room_Stays_In AS (SELECT * FROM Room NATURAL JOIN Stays);
