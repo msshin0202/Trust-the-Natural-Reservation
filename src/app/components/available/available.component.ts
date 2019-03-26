@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-available',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./available.component.scss']
 })
 export class AvailableComponent implements OnInit {
+  rooms = [];
 
-  constructor() { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    const navigation = this.router.getCurrentNavigation();
+    this.rooms = navigation.extras.state ? navigation.extras.state.rooms.data : this.rooms;
+    localStorage.removeItem('Array');
+    localStorage.setItem('Array', JSON.stringify(this.rooms));
+  }
 
   ngOnInit() {
+    this.rooms = JSON.parse(localStorage.getItem('Array'));
   }
 
 }

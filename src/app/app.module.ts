@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
+import { CloginComponent } from './components/clogin/clogin.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { CustlandingComponent } from './components/custlanding/custlanding.component';
@@ -18,6 +19,7 @@ import { RoomComponent } from './components/room/room.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
+import { PayComponent } from './components/pay/pay.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +33,11 @@ import { EmplandingComponent } from './components/emplanding/emplanding.componen
     ConfirmationComponent,
     RoomComponent,
     RoomsComponent,
+    PayComponent,
+    CloginComponent,
     EloginComponent,
-    EmplandingComponent,
+    EmplandingComponent
+
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,10 @@ import { EmplandingComponent } from './components/emplanding/emplanding.componen
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'clogin',
+        component: CloginComponent
       },
       {
         path: 'logout',
@@ -73,13 +82,17 @@ import { EmplandingComponent } from './components/emplanding/emplanding.componen
         component: ConfirmationComponent
       },
       {
-        path: 'elogin',
-        component: EloginComponent
+        path: 'pay',
+        component: PayComponent
       },
       {
-        path: 'employee',
-        component: EmplandingComponent
-      }
+      path: 'elogin',
+      component: EloginComponent
+    },
+    {
+      path: 'employee',
+      component: EmplandingComponent
+    }
 
       // {
       //   path: '**',

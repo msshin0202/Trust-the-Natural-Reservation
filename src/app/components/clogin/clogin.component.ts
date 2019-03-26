@@ -3,32 +3,30 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-clogin',
+  templateUrl: './clogin.component.html',
+  styleUrls: ['./clogin.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class CloginComponent implements OnInit {
 
   constructor(private Auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  loginUser(event) {
+  loginCustomer(event) {
     event.preventDefault();
     const target = event.target;
     const username = target.querySelector('#username').value;
     const password = target.querySelector('#password').value;
 
-    this.Auth.getUserDetails(username, password).subscribe(data => {
-      console.log(data);
+    this.Auth.getCustomerDetails(username, password).subscribe(data => {
       if(data.success) {
         this.router.navigate(['cust']);
         this.Auth.setLoggedIn(true);
       } else {
-        window.alert('Invalid Username or Password');
+        window.alert(data.message);
       }
     });
-    console.log(username, password);
   }
 }
