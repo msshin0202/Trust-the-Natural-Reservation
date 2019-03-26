@@ -1,6 +1,6 @@
 <?php
     function connect() {
-        $dbhost = "localhost:8889";
+        $dbhost = "localhost";
         $dbuser = "root";
         $dbpass = "n39JKmvul2fJejWB";
         $db = "hotel";
