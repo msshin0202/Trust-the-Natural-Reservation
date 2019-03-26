@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  eloginUser(event) {
+  loginUser(event) {
     event.preventDefault();
     const target = event.target;
     const username = target.querySelector('#username').value;

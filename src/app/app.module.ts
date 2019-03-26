@@ -80,6 +80,7 @@ import { EmplandingComponent } from './components/emplanding/emplanding.componen
         path: 'employee',
         component: EmplandingComponent
       }
+
       // {
       //   path: '**',
       //   component: PagenotfoundComponent
