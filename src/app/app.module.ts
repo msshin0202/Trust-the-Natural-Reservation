@@ -13,7 +13,6 @@ import { CustUserService } from './services/cust-user.service';
 import { SliderComponent } from './components/slider/slider.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
-import { RoomComponent } from './components/room/room.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { ViewProfileComponent } from './components/view.profile/view.profile.component';
 
@@ -26,7 +25,6 @@ import { ViewProfileComponent } from './components/view.profile/view.profile.com
     CustlandingComponent,
     SliderComponent,
     ConfirmationComponent,
-    RoomComponent,
     RoomsComponent,
     ViewProfileComponent,
   ],
@@ -55,10 +53,6 @@ import { ViewProfileComponent } from './components/view.profile/view.profile.com
       {
         path: 'rooms',
         component: RoomsComponent
-      },
-      {
-        path: 'rooms/:id',
-        component: RoomComponent
       },
       {
         path: 'confirmation',
