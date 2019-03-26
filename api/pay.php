@@ -16,7 +16,7 @@ $con = connect();
 //   $room['price']   = $row['price'];
 // }
 //
-// echo json_encode(['data'=>$room]);
+echo json_encode(['data'=>$room]);
 close($con);
 
  ?>

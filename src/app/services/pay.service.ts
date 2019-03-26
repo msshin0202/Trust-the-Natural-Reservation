@@ -14,18 +14,18 @@ export class PayService {
 
   submitCash(bid, amount) {
     console.log("submitted via cash");
-    this.http.get(`${this.baseUrl}/pay`).subscribe((data) => console.log(data))
-    // this.http.post<any>(`${this.baseUrl}/pay`, { bid, amount })
-    // .subscribe((data) => {
-    //   console.log(data);
-    //   console.log('got data from backend');
-    // })
+    this.http.post<any>(`${this.baseUrl}/pay`, { bid, amount })
+    .subscribe((data) => {
+      console.log(data);
+      console.log('got data from backend');
+    })
   }
 
   submitCreditCard(bid, amount, cardHolderName, creditCardNumber, expirary, svc) {
     console.log("submitted via credit");
-    this.http.post<any>(`${this.baseUrl}/pay`, { bid, amount, cardHolderName, creditCardNumber, expirary, svc })
+    this.http.post<any>(`${this.baseUrl}/pay`, { bid, amount })
     .subscribe((data) => {
+      console.log(data);
       console.log('got data from backend');
     })
   }
