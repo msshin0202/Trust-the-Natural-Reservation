@@ -1,10 +1,6 @@
 <?php
-/**
- * Returns the list of cars.
- */
+require './connect.php';
 
-require '../connect.php';
-    
 $rooms = [];
 $sql = "SELECT pnumber, fname, lname FROM customers";
 $con = connect();
@@ -18,7 +14,7 @@ if ($result = mysqli_query($con, $sql)) {
     $rooms[$cr]['lname']   = $row['lname'];
     $cr++;
   }
-    
+
   echo json_encode(['data'=>$rooms]);
 }
 else

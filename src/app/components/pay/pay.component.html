@@ -1,0 +1,49 @@
+
+
+  <div class="divider">
+    <h1>Thank you for staying at our Hotel!</h1>
+    <h3>Select your payment method</h3>
+  </div>
+
+    <div>
+      <div class="divider"></div>
+      <button (click)="creditCardPayment()" type="button" id="creditCard" name="paymentType" class="button">Credit Card</button>
+      <div class="divider"></div>
+      <button (click)="cashPayment()" type="button" id="cash" name="paymentType" class="button">Cash</button>
+    </div>
+
+  <div class="divider"></div>
+  <form (submit)="onSubmit($event)">
+    <div>
+      <label for="bid" *ngIf="isCreditCard || isCash" class="divider">
+        Enter your Bill ID:
+        <input type="text" id="bid" placeholder="1234">
+      </label>
+    </div>
+
+    <label for="creditCardPayment" *ngIf=isCreditCard class="divider">
+      <p>Name as it appears on the card:
+        <input type="text" id="cardHolderName" placeholder="John Appleseed">
+      </p>
+      <p>Credit card number:
+        <input type="text" id="creditCardNumber" placeholder="1234 5678 1234 5678">
+      </p>
+      <p>Expirary:
+        <input type="text" id="expirary" placeholder="MM/DD">
+      </p>
+      <p>SVC:
+        <input type="text" id="svc" placeholder="123">
+      </p>
+    </label>
+
+    <div>
+      <label for="amount" *ngIf="isCreditCard || isCash" class="divider">
+        Enter the amount you wish to pay:
+        <input type="text" id="amount" placeholder="99">
+      </label>
+    </div>
+
+    <div class="divider">
+      <button type="submit" name="submit">Submit</button>
+    </div>
+</form>

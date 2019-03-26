@@ -16,6 +16,7 @@ import { AvailableComponent } from './components/available/available.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { RoomComponent } from './components/room/room.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { PayComponent } from './components/pay/pay.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RoomsComponent } from './components/rooms/rooms.component';
     ConfirmationComponent,
     RoomComponent,
     RoomsComponent,
+    PayComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import { RoomsComponent } from './components/rooms/rooms.component';
       {
         path: '',
         component: HomeComponent
-      }, 
+      },
       {
         path: 'rooms',
         component: RoomsComponent
@@ -67,6 +69,10 @@ import { RoomsComponent } from './components/rooms/rooms.component';
       {
         path: 'confirmation',
         component: ConfirmationComponent
+      },
+      {
+        path: 'pay',
+        component: PayComponent
       },
       // {
       //   path: '**',
