@@ -1,0 +1,14 @@
+<p>
+  listcust works!
+</p>
+<form (submit)="chooseDate($event)">
+  <div class="container">
+    <h4>Choose Date:</h4>
+    <div>
+      <input type="date" autocomplete="off" id="checkInDate">
+    </div>
+      <div>
+        <button (click)="showList($event)" type="submit" id="submit">Submit</button>
+      </div>
+    </div>
+</form>

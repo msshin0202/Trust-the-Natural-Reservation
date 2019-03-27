@@ -8,11 +8,13 @@ import { EroomstatusService } from '../../services/eroomstatus.service';
   styleUrls: ['./eroomstatus.component.scss']
 })
 export class EroomstatusComponent implements OnInit {
-  rooms: [];
+  rooms =[];
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private ersser: EroomstatusService) {
 
-  this.rooms = this.ersser.getRoomStatus();
-  
+  this.ersser.getRoomStatus().subscribe(rooms => {
+        this.rooms = rooms;
+    });
+
   // let objroomsprops = Object.keys(objrooms);
   // for (let room of objroomsprops){
   //   this.rooms.push(objroomsprops[room]);

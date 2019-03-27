@@ -13,10 +13,10 @@ export class EmplandingComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  getRoomStatus(){
-    console.log("emplanding.component");
-    this.EroomstatusService.getRoomStatus().subscribe(data => {
-      console.log(data);})
-  }
+  // 
+  // getRoomStatus(){
+  //   console.log("emplanding.component");
+  //   this.EroomstatusService.getRoomStatus().subscribe(data => {
+  //     console.log(data);})
+  // }
 }

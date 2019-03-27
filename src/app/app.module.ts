@@ -21,6 +21,7 @@ import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
 import { PayComponent } from './components/pay/pay.component';
 import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.component';
+import { ListcustComponent } from './components/listcust/listcust.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.compo
     CloginComponent,
     EloginComponent,
     EmplandingComponent,
-    EroomstatusComponent
+    EroomstatusComponent,
+    ListcustComponent
 
   ],
   imports: [
@@ -88,6 +90,10 @@ import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.compo
     {
       path: 'roomstatus',
       component: EroomstatusComponent
+    },
+    {
+      path: 'checkedincust',
+      component: ListcustComponent
     }
       // {
       //   path: '**',
