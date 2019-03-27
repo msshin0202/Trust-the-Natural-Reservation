@@ -38,7 +38,6 @@ export class PayComponent implements OnInit {
           }
         });
       } else {
-
         this.payService.submitCash(bid, amount, this.isCash).subscribe((data) => {
           window.alert(data.message);
           if (data.success) {
