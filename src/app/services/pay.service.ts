@@ -8,7 +8,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 })
 export class PayService {
 
-  baseUrl = 'http://localhost/api';
+  baseUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 
