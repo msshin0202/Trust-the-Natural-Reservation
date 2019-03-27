@@ -16,29 +16,29 @@
     <div>
       <label for="bid" *ngIf="isCreditCard || isCash" class="divider">
           Enter your Bill ID:
-          <input type="text" id="bid" placeholder="1234">
+          <input type="text" id="bid" placeholder="1234" pattern="[0-9]*">
       </label>
     </div>
 
     <label for="creditCardPayment" *ngIf=isCreditCard class="divider">
       <p>Name as it appears on the card:
-        <input type="text" id="cardHolderName" placeholder="John Appleseed">
+        <input type="text" id="cardHolderName" placeholder="John Appleseed" pattern="[A-Za-z]* [A-Za-z]*" required>
       </p>
       <p>Credit card number:
-        <input type="text" id="creditCardNumber" placeholder="1234 5678 1234 5678">
+        <input type="text" id="creditCardNumber" placeholder="1234567812345678" pattern="[0-9]{16}" required>
       </p>
       <p>Expirary:
-        <input type="text" id="expirary" placeholder="MM/DD">
+        <input type="text" id="expirary" placeholder="MM/DD" pattern="[0-9][0-9]/[0-9][0-9]" required>
       </p>
       <p>SVC:
-        <input type="text" id="svc" placeholder="123">
+        <input type="text" id="svc" placeholder="123" pattern="[0-9]{3}" required>
       </p>
     </label>
 
     <div>
       <label for="amount" *ngIf="isCreditCard || isCash" class="divider">
         Enter the amount you wish to pay:
-        <input type="text" id="amount" placeholder="99">
+        <input type="text" id="amount" placeholder="99" pattern="[0-9]">
       </label>
     </div>
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PayService } from '../../services/pay.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pay',
@@ -13,7 +12,7 @@ export class PayComponent implements OnInit {
   isCreditCard: boolean = false;
   baseUrl = 'http://localhost:3000/api';
 
-  constructor(private router: Router, private payService: PayService) { }
+  constructor(private payService: PayService) { }
 
   ngOnInit() {
   }
@@ -31,19 +30,9 @@ export class PayComponent implements OnInit {
         const expirary = target.querySelector('#expirary').value;
         const svc = target.querySelector('#svc').value;
         console.log(cardHolderName, creditCardNumber, expirary, svc);
-        this.payService.submitCreditCard(bid, amount, this.isCash).subscribe((data) => {
-          window.alert(data.message);
-          if (data.success){
-            this.router.navigate(['cust']);
-          }
-        });
+        this.payService.submitCreditCard(bid, amount, this.isCash);
       } else {
-        this.payService.submitCash(bid, amount, this.isCash).subscribe((data) => {
-          window.alert(data.message);
-          if (data.success) {
-            this.router.navigate(['cust']);
-          }
-        });
+        this.payService.submitCash(bid, amount, this.isCash);
       }
   }
 
