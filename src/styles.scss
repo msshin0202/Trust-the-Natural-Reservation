@@ -14,3 +14,7 @@
   padding: 30px 30px 30px 30px; 
   display: inline-block;
 }
+
+button:focus {
+  outline: 0;
+}
