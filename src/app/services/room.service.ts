@@ -8,7 +8,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 
 export class RoomService {
-  baseUrl = 'http://localhost/api';
+  baseUrl = 'http://localhost:3000/api';
   rooms: [];
 
   constructor(private http: HttpClient) {}
