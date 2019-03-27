@@ -19,4 +19,5 @@ export class RoomsService {
   getAvailableRooms(date) {
     return this.http.post<myData>(`${this.baseUrl}/rooms`, { date })
   }
+
 }

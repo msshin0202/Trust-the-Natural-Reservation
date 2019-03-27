@@ -20,6 +20,7 @@ import { RoomsComponent } from './components/rooms/rooms.component';
 import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
 import { PayComponent } from './components/pay/pay.component';
+import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PayComponent } from './components/pay/pay.component';
     PayComponent,
     CloginComponent,
     EloginComponent,
-    EmplandingComponent
+    EmplandingComponent,
+    EroomstatusComponent
 
   ],
   imports: [
@@ -92,6 +94,10 @@ import { PayComponent } from './components/pay/pay.component';
     {
       path: 'employee',
       component: EmplandingComponent
+    },
+    {
+      path: 'roomstatus',
+      component: EroomstatusComponent
     }
 
       // {
