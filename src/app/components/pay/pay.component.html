@@ -1,8 +1,7 @@
 
 
   <div class="divider">
-    <h1>Thank you for staying at our Hotel!</h1>
-    <h3>Select your payment method</h3>
+    <h3>Select payment method</h3>
   </div>
 
     <div>
@@ -16,8 +15,14 @@
   <form (submit)="onSubmit($event)">
     <div>
       <label for="bid" *ngIf="isCreditCard || isCash" class="divider">
-        Enter your Bill ID:
-        <input type="text" id="bid" placeholder="1234">
+        <p>
+          Enter your Bill ID:
+          <input type="text" id="bid" placeholder="1234">
+        </p>
+        <p>
+          Enter customer phone number:
+          <input type="text" id="phoneNumber" placeholder="123456789">
+        </p>
       </label>
     </div>
 
