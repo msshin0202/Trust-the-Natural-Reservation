@@ -8,33 +8,36 @@ CREATE TABLE Customer
   password VARCHAR(20),
   PRIMARY KEY (phoneNumber) );
 
+CREATE TABLE Room
+( roomNumber INT NOT NULL,
+  numberOfBeds INT,
+  cleanliness BIT,
+  price INT,
+  PRIMARY KEY (roomNumber) );
+
 CREATE TABLE Reservation_Made_By
 ( reservationNumber INT NOT NULL,
+  roomNumber INT NOT NULL,
   phoneNumber VARCHAR(10),
   checkInDate DATE,
   checkOutDate DATE,
   PRIMARY KEY (reservationNumber),
+  FOREIGN KEY (roomNumber) REFERENCES Room (roomNumber) ON DELETE CASCADE,
   FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE
                                                              ON UPDATE CASCADE );
-CREATE TABLE Room
-( roomNumber INT NOT NULL,
-  reservationNumber INT,
-  numberOfBeds INT,
-  cleanliness BIT,
-  price INT,
-  PRIMARY KEY (roomNumber),
-  FOREIGN KEY (reservationNumber) REFERENCES Reservation_Made_By(reservationNumber) ON DELETE SET NULL );
-
 CREATE TABLE Stays
 ( roomNumber INT NOT NULL,
-  phoneNumber VARCHAR(10),
-  PRIMARY KEY (roomNumber),
-  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE );
+  phoneNumber VARCHAR(10) NOT NULL,
+  PRIMARY KEY (roomNumber, phoneNumber),
+  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE,
+  FOREIGN KEY (roomNumber) REFERENCES Room (roomNumber) ON DELETE CASCADE );
 
 CREATE TABLE Bill
 ( bid INT NOT NULL,
   amount INT,
-  PRIMARY KEY (bid) );
+  phoneNumber VARCHAR(10) NOT NULL,
+  PRIMARY KEY (bid),
+  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE );
 
 CREATE TABLE Transaction
 ( tid INT NOT NULL,
@@ -45,11 +48,10 @@ CREATE TABLE Transaction
 CREATE TABLE Pays
 ( bid INT NOT NULL,
   tid INT NOT NULL,
-  phoneNumber VARCHAR(10),
+  amount INT NOT NULL,
   PRIMARY KEY (bid, tid),
   FOREIGN KEY (bid) REFERENCES Bill(bid) ON DELETE CASCADE,
-  FOREIGN KEY (tid) REFERENCES Transaction(tid) ON DELETE CASCADE,
-  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE );
+  FOREIGN KEY (tid) REFERENCES Transaction(tid) ON DELETE CASCADE );
 
 CREATE TABLE Employee
 ( employeeID INT NOT NULL,

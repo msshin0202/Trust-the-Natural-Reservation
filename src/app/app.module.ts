@@ -13,9 +13,9 @@ import { AuthService } from './services/auth.service';
 import { CustUserService } from './services/cust-user.service';
 import { SliderComponent } from './components/slider/slider.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AvailableComponent } from './components/available/available.component';
+// import { AvailableComponent } from './components/available/available.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
-import { RoomComponent } from './components/room/room.component';
+// import { RoomComponent } from './components/room/room.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
@@ -30,9 +30,7 @@ import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.compo
     HomeComponent,
     CustlandingComponent,
     SliderComponent,
-    AvailableComponent,
     ConfirmationComponent,
-    RoomComponent,
     RoomsComponent,
     PayComponent,
     CloginComponent,
@@ -72,14 +70,6 @@ import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.compo
         component: RoomsComponent
       },
       {
-        path: 'available/:id',
-        component: RoomComponent
-      },
-      {
-        path: 'available',
-        component: AvailableComponent
-      },
-      {
         path: 'confirmation',
         component: ConfirmationComponent
       },
@@ -99,7 +89,6 @@ import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.compo
       path: 'roomstatus',
       component: EroomstatusComponent
     }
-
       // {
       //   path: '**',
       //   component: PagenotfoundComponent

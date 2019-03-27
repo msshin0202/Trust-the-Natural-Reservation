@@ -7,25 +7,26 @@ $con = connect();
 
 $_POST = json_decode(file_get_contents('php://input'), true);
 
-$date = new DateTime($_POST['date']);
+$checkInDate = new DateTime($_POST['date']['checkInDate']);
+$checkOutDate = new DateTime($_POST['date']['checkOutDate']);
 $cr = 0;
-$sql = "SELECT roomNumber, reservationNumber, numberOfBeds, cleanliness, price FROM Room";
+
+$sql = "SELECT r.roomNumber, r.numberOfBeds, r.cleanliness, r.price, rmb.checkInDate, rmb.checkOutDate FROM Room r LEFT JOIN Reservation_made_by rmb ON r.roomNumber = rmb.roomNumber";
 if ($result = mysqli_query($con, $sql)) {
   while($row = mysqli_fetch_assoc($result)) {
-    $rooms[$cr]['roomNumber'] = $row['roomNumber'];
-    $rooms[$cr]['numberOfBeds']  = $row['numberOfBeds'];
-    $rooms[$cr]['price']   = $row['price'];
-    $cr++;
-  }
-}
-$sql = "SELECT r.roomNumber, r.numberOfBeds, r.cleanliness, r.price, rv.checkOutDate FROM Room r, Stays s, Reservation_Made_By rv WHERE rv.reservationNumber = r.reservationNumber AND r.roomNumber = s.roomNumber";
-if ($result = mysqli_query($con, $sql)) {
-  while($row = mysqli_fetch_assoc($result)) {
-    $checkOutDate = new DateTime($row['checkOutDate']);
-    if ($checkOutDate < $date) {
+    if (isset($row['checkInDate']) && isset($row['checkOutDate'])) {
+      $r_checkInDate = new DateTime($row['checkInDate']);
+      $r_checkOutDate = new DateTime($row['checkOutDate']);
+      if ($r_checkOutDate < $checkInDate || $r_checkInDate > $checkOutDate) {
+        $rooms[$cr]['roomNumber'] = $row['roomNumber'];
+        $rooms[$cr]['numberOfBeds'] = $row['numberOfBeds'];
+        $rooms[$cr]['price'] = $row['price'];
+        $cr++;
+      }
+    } else {
       $rooms[$cr]['roomNumber'] = $row['roomNumber'];
-      $rooms[$cr]['numberOfBeds']  = $row['numberOfBeds'];
-      $rooms[$cr]['price']   = $row['price'];
+      $rooms[$cr]['numberOfBeds'] = $row['numberOfBeds'];
+      $rooms[$cr]['price'] = $row['price'];
       $cr++;
     }
   }

@@ -11,11 +11,12 @@ export class EroomstatusComponent implements OnInit {
   rooms: [];
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private ersser: EroomstatusService) {
 
-  let objrooms = this.ersser.getRoomStatus();
-  let objroomsprops = Object.keys(objrooms);
-  for (let room of objroomsprops){
-    this.rooms.push(objroomsprops[room]);
-  }
+  this.rooms = this.ersser.getRoomStatus();
+  
+  // let objroomsprops = Object.keys(objrooms);
+  // for (let room of objroomsprops){
+  //   this.rooms.push(objroomsprops[room]);
+  // }
   // localStorage.removeItem('Array');
   // localStorage.setItem('Array', JSON.stringify(this.rooms));
 
