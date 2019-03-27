@@ -43,10 +43,12 @@ export class RoomsComponent implements OnInit {
     });
   }
 
-  reserve(event): void {
+  reserve(event, roomNumber): void {
     event.preventDefault();
+    console.log(roomNumber);
     const param = {
-      date: this.date
+      date: this.date,
+      roomNumber: roomNumber
     }
     this.reservationService.makeReservation(param).subscribe(data => {
       const ne: NavigationExtras = {

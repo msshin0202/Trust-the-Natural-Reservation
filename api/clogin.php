@@ -1,6 +1,6 @@
 <?php
 
-require '../connect.php';
+require './connect.php';
 
 const RESULT_SUCCESS_KEY = "success";
 const RESULT_MESSAGE_KEY = "message";
