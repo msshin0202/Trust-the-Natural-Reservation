@@ -1,10 +1,24 @@
-<form (submit)="getRooms($event)" style="display:inline-block;min-width:300px;margin:10px;padding:10px;box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);">
+<form (submit)="getRooms($event)">
   <div class="container">
+    <h4>Check-in date here 😊</h4>
     <div>
       <input type="date" autocomplete="off" id="check-in">
+      <input type="date" autocomplete="off" id="check-out">
     </div>
     <div>
-      <button type="submit" id="submit">Submit</button>
+      <button (click)="myFunction($event)" type="submit" id="submit">Submit</button>
     </div>
   </div>
 </form>
+<div id="snackbar">{{rooms.length}} rooms are available</div>
+<div [hidden]="!toggle">
+  <div class="cardbox" *ngFor="let item of rooms">
+    <div class="card">
+      <p>Room number: {{item.roomNumber}}</p>
+      <p>No. of beds: {{item.numberOfBeds}}</p>
+      <p>${{item.price}}</p>
+      <!-- <a [routerLink]="item.roomNumber">See detail</a> -->
+      <button (click)="reserve($event, item.roomNumber)" type="submit">Make reservation</button>
+    </div>
+  </div>
+</div>

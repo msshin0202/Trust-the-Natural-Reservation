@@ -22,7 +22,7 @@ CREATE TABLE Reservation_Made_By
   checkInDate DATE,
   checkOutDate DATE,
   PRIMARY KEY (reservationNumber),
-  FOREIGN KEY (roomNumber) REFERENCES Room(roomNumber) ON DELETE CASCADE ,
+  FOREIGN KEY (roomNumber) REFERENCES Room (roomNumber) ON DELETE CASCADE,
   FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE
                                                              ON UPDATE CASCADE );
 CREATE TABLE Stays
@@ -30,7 +30,7 @@ CREATE TABLE Stays
   phoneNumber VARCHAR(10) NOT NULL,
   PRIMARY KEY (roomNumber, phoneNumber),
   FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE,
-  FOREIGN KEY (roomNumber) REFERENCES Room(roomNumber) ON DELETE CASCADE );
+  FOREIGN KEY (roomNumber) REFERENCES Room (roomNumber) ON DELETE CASCADE );
 
 CREATE TABLE Bill
 ( bid INT NOT NULL,

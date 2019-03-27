@@ -33,3 +33,4 @@ echo json_encode(['data'=>$result1, 'data2'=>$result2]);
 close($con);
 
  ?>
+

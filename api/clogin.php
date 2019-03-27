@@ -8,7 +8,8 @@ const POST_USERNAME_KEY = "username";
 const POST_PASSWORD_KEY = "password";
 const SESSION_USER_KEY = "user";
 
-function login($email, $password) {
+function login($email, $password)
+{
     $conn;
     $loginResult = array();
     try {
@@ -20,7 +21,7 @@ function login($email, $password) {
         if ($row == null) {
             $loginResult[RESULT_SUCCESS_KEY] = false;
             $loginResult[RESULT_MESSAGE_KEY] = "Customer information does not exist. Please sign up.";
-        } else if ($password == $row[POST_PASSWORD_KEY]) {
+        } elseif ($password == $row[POST_PASSWORD_KEY]) {
             session_start();
             $_SESSION[SESSION_USER_KEY] = $email;
             $loginResult[RESULT_SUCCESS_KEY] = true;
@@ -44,7 +45,7 @@ $result = array();
 $result[RESULT_SUCCESS_KEY] = false;
 $result[RESULT_MESSAGE_KEY] = "Customer has failed to log in. Please try again.";
 
-if(isset($_POST) && !empty($_POST)) {
+if (isset($_POST) && !empty($_POST)) {
     $result = login($_POST["username"], $_POST["password"]);
 }
 

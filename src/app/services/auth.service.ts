@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';  
+import { HttpClient } from '@angular/common/http';
 
 interface myData {
   success: boolean,
@@ -25,6 +25,13 @@ export class AuthService {
 
   getCustomerDetails(username, password) {
     return this.http.post<myData>(`${this.baseUrl}/clogin`, {
+      username,
+      password
+    })
+  }
+
+  getEmployeeDetails(username, password) {
+    return this.http.post<myData>(`${this.baseUrl}/elogin`, {
       username,
       password
     })

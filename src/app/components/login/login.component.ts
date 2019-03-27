@@ -21,10 +21,10 @@ export class LoginComponent implements OnInit {
     const password = target.querySelector('#password').value;
 
     this.Auth.getUserDetails(username, password).subscribe(data => {
-      console.log(data);
       if(data.success) {
         this.router.navigate(['cust']);
         this.Auth.setLoggedIn(true);
+        // localStorage.setItem('email', data.email);
       } else {
         window.alert('Invalid Username or Password');
       }
