@@ -19,12 +19,17 @@ export class RoomsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.rooms = JSON.parse(localStorage.getItem('array'));
+    this.rooms = JSON.parse(localStorage.getItem('array')) === null ? [] : JSON.parse(localStorage.getItem('array'));
     this.toggle = localStorage.getItem('toggle') == 'true';
   }
 
+  ngOnDestroy(): void {
+    localStorage.removeItem('array');
+    localStorage.removeItem('toggle');
+  }
+
   getRooms(event): void {
-    event.preventDefault(); 
+    event.preventDefault();
     const target = event.target;
     const checkInDate = target.querySelector('#check-in').value;
     const checkOutDate = target.querySelector('#check-out').value;
