@@ -12,4 +12,8 @@ export class CheckoutService {
   checkOutCustomer(phoneNumber) {
     return this.http.post<any>(`${this.baseUrl}/checkout`, { phoneNumber })
   }
+
+  generateBill(phoneNumber) {
+    return this.http.post<any>(`${this.baseUrl}/generate`, { phoneNumber })
+  }
 }

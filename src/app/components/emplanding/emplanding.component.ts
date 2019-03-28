@@ -32,6 +32,19 @@ export class EmplandingComponent implements OnInit {
     })
   }
 
+  generateBill(event) {
+    event.preventDefault();
+    const target = event.target;
+    const phoneNumber = target.querySelector('#phoneNumber').value;
+    console.log(phoneNumber);
+    this.checkOutService.generateBill(phoneNumber).subscribe(data => {
+      console.log(data);
+      this.total = data.total;
+      console.log(this.total);
+      localStorage.setItem('total', String(this.total));
+    })
+  }
+
   showSnackbar(event): void {
     var x = document.getElementById("snackbar");
     x.className = "show";
