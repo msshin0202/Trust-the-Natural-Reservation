@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 $user = $_SESSION['user'];
 echo $user;
 if($user == 'admin') {
