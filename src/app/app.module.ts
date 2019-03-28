@@ -24,6 +24,7 @@ import { ListcustComponent } from './components/listcust/listcust.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
+import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { CheckinComponent } from './components/checkin/checkin.component';
     ListcustComponent,
     SignupComponent,
     ViewDirtyRoomsComponent,
-    CheckinComponent
+    CheckinComponent,
+    PopularRoomsComponent
   ],
   imports: [
     BrowserModule,
@@ -117,6 +119,10 @@ import { CheckinComponent } from './components/checkin/checkin.component';
 
         path: 'view-dirty-rooms',
         component: ViewDirtyRoomsComponent
+      },
+      {
+        path: 'popular-rooms',
+        component: PopularRoomsComponent
       }
     ])
   ],
