@@ -20,6 +20,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CloginComponent,
     EloginComponent,
     EmplandingComponent,
-    SignupComponent
+    SignupComponent,
+    ViewDirtyRoomsComponent
   ],
   imports: [
     BrowserModule,
@@ -84,10 +86,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       {
         path: 'employee',
         component: EmplandingComponent
-      }, 
-      { 
+      },
+      {
         path: 'signup',
         component: SignupComponent
+      },
+      {
+        path: 'view-dirty-rooms',
+        component: ViewDirtyRoomsComponent
       }
     ])
   ],
