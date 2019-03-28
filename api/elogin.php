@@ -7,6 +7,8 @@ const RESULT_MESSAGE_KEY = "message";
 const POST_USERNAME_KEY = "username";
 const POST_PASSWORD_KEY = "password";
 const SESSION_USER_KEY = "user";
+const COOKIE_SESSION_ID_KEY = "sessionID";
+const SESSION_USER_TYPE_KEY = "userType";
 
 function login($email, $password)
 {
@@ -24,6 +26,7 @@ function login($email, $password)
         } elseif ($password == $row[POST_PASSWORD_KEY]) {
             session_start();
             $_SESSION[SESSION_USER_KEY] = $email;
+            $_SESSION[SESSION_USER_TYPE_KEY] = 'employee';
             $loginResult[RESULT_SUCCESS_KEY] = true;
             $loginResult[RESULT_MESSAGE_KEY] = "Login Successful!";
         } else {
@@ -49,4 +52,5 @@ if (isset($_POST) && !empty($_POST)) {
     $result = login($_POST["username"], $_POST["password"]);
 }
 
+setcookie(COOKIE_SESSION_ID_KEY, session_id(), 0, '/');
 echo json_encode($result);

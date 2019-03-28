@@ -13,15 +13,18 @@ import { AuthService } from './services/auth.service';
 import { CustUserService } from './services/cust-user.service';
 import { SliderComponent } from './components/slider/slider.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import { AvailableComponent } from './components/available/available.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
-// import { RoomComponent } from './components/room/room.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { PayComponent } from './components/pay/pay.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
-import { PayComponent } from './components/pay/pay.component';
 import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.component';
 import { ListcustComponent } from './components/listcust/listcust.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
+import { CheckinComponent } from './components/checkin/checkin.component';
+
 
 @NgModule({
   declarations: [
@@ -38,13 +41,17 @@ import { ListcustComponent } from './components/listcust/listcust.component';
     EloginComponent,
     EmplandingComponent,
     EroomstatusComponent,
-    ListcustComponent
-
+    ListcustComponent,
+    SignupComponent,
+    ViewDirtyRoomsComponent,
+    CheckinComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgbModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: 'login',
@@ -61,7 +68,8 @@ import { ListcustComponent } from './components/listcust/listcust.component';
       {
         path: 'cust',
         component: CustlandingComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer'] }
       },
       {
         path: '',
@@ -69,7 +77,9 @@ import { ListcustComponent } from './components/listcust/listcust.component';
       },
       {
         path: 'rooms',
-        component: RoomsComponent
+        component: RoomsComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer', 'employee'] }
       },
       {
         path: 'confirmation',
@@ -77,16 +87,25 @@ import { ListcustComponent } from './components/listcust/listcust.component';
       },
       {
         path: 'pay',
-        component: PayComponent
+        component: PayComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer', 'employee'] }
       },
       {
-      path: 'elogin',
-      component: EloginComponent
-    },
-    {
-      path: 'employee',
-      component: EmplandingComponent
-    },
+        path: 'elogin',
+        component: EloginComponent
+      },
+      {
+        path: 'employee',
+        component: EmplandingComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['employee'] }
+      },
+      {
+        path: 'signup',
+        component: SignupComponent
+      },
+
     {
       path: 'roomstatus',
       component: EroomstatusComponent
@@ -94,11 +113,11 @@ import { ListcustComponent } from './components/listcust/listcust.component';
     {
       path: 'checkedincust',
       component: ListcustComponent
-    }
-      // {
-      //   path: '**',
-      //   component: PagenotfoundComponent
-      // }
+    },{
+
+        path: 'view-dirty-rooms',
+        component: ViewDirtyRoomsComponent
+      }
     ])
   ],
   providers: [AuthService, CustUserService, AuthGuard],

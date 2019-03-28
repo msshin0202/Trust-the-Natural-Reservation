@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class RoomsService {
   baseUrl = 'http://localhost:3000/api';
-  rooms: [];
 
   constructor(private http: HttpClient) {}
 
@@ -16,4 +13,11 @@ export class RoomsService {
     return this.http.post<any>(`${this.baseUrl}/rooms`, { date })
   }
 
+  getDirtyRooms(){
+    return this.http.post<any>(`${this.baseUrl}/view-dirty-rooms`, {})
+  }
+
+  cleanRoom(roomNumber){
+    return this.http.post<any>(`${this.baseUrl}/clean-room`, { roomNumber })
+  }
 }

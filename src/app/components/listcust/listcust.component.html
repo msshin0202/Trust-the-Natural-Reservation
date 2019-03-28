@@ -1,6 +1,4 @@
-<p>
-  listcust works!
-</p>
+<h1>Customer List under Check-In Date</h1>
 <div class="container" id="datepick">
   <form (submit)="chooseDate($event)" name="chooseDateForm">
     <div class="container">
@@ -15,11 +13,11 @@
   </form>
 </div>
 <div id="list" style="display: none;">
-  <div class="cardbox" *ngFor="let customer of customers">
+  <div class="cardbox" *ngFor="let customer of customers" style="display:inline-block;min-width:calc(33.33% - 20px);margin:10px;padding:10px;box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);">
     <div class="card">
       <p>First Name: {{customer.firstName}}</p>
       <p>Last Name: {{customer.lastName}}</p>
-      <p>Check out date: {{customer.checkOutDate}}</p>
+      <p>Check-out date: {{customer.checkOutDate}}</p>
       <!-- <a [routerLink]="item.roomNumber">See detail</a> -->
 
     </div>
