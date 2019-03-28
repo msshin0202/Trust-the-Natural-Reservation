@@ -20,6 +20,7 @@ export class ListcustComponent implements OnInit {
     event.preventDefault();
     const target = event.target;
     const date = target.querySelector('#checkInDate').value;
+    console.log(typeof(date));
     this.listcust.getListCust(date).subscribe(data => {
       console.log(data);
     this.customers = data;})

@@ -15,13 +15,13 @@
   </form>
 </div>
 <div id="list" style="display: none;">
-  <div class="cardbox" *ngFor="let item of rooms">
+  <div class="cardbox" *ngFor="let customer of customers">
     <div class="card">
-      <p>Room number: {{item.roomNumber}}</p>
-      <p>No. of beds: {{item.numberOfBeds}}</p>
-      <p>${{item.price}}</p>
+      <p>First Name: {{customer.firstName}}</p>
+      <p>Last Name: {{customer.lastName}}</p>
+      <p>Check out date: {{customer.checkOutDate}}</p>
       <!-- <a [routerLink]="item.roomNumber">See detail</a> -->
-      <button (click)="reserve($event, item.roomNumber)" type="submit">Make reservation</button>
+
     </div>
   </div>
 </div>
