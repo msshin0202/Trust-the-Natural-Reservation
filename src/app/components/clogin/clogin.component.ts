@@ -21,6 +21,7 @@ export class CloginComponent implements OnInit {
     const password = target.querySelector('#password').value;
 
     this.Auth.getCustomerDetails(username, password).subscribe(data => {
+      console.log(data);
       if(data.success) {
         this.router.navigate(['cust']);
         this.Auth.setLoggedIn(true);

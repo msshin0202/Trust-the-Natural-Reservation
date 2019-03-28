@@ -20,6 +20,7 @@ import { RoomsComponent } from './components/rooms/rooms.component';
 import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
 import { PayComponent } from './components/pay/pay.component';
+import { CheckinComponent } from './components/checkin/checkin.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PayComponent } from './components/pay/pay.component';
     PayComponent,
     CloginComponent,
     EloginComponent,
-    EmplandingComponent
+    EmplandingComponent,
+    CheckinComponent
 
   ],
   imports: [
@@ -57,7 +59,8 @@ import { PayComponent } from './components/pay/pay.component';
       {
         path: 'cust',
         component: CustlandingComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer'] }
       },
       {
         path: '',
@@ -65,7 +68,9 @@ import { PayComponent } from './components/pay/pay.component';
       },
       {
         path: 'rooms',
-        component: RoomsComponent
+        component: RoomsComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer', 'employee'] }
       },
       {
         path: 'confirmation',
@@ -73,7 +78,9 @@ import { PayComponent } from './components/pay/pay.component';
       },
       {
         path: 'pay',
-        component: PayComponent
+        component: PayComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer', 'employee'] }
       },
       {
       path: 'elogin',
@@ -81,7 +88,9 @@ import { PayComponent } from './components/pay/pay.component';
     },
     {
       path: 'employee',
-      component: EmplandingComponent
+      component: EmplandingComponent,
+      canActivate: [AuthGuard],
+      data: { userTypeAllowed: ['employee'] }
     }
       // {
       //   path: '**',
