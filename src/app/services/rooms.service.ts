@@ -24,4 +24,8 @@ export class RoomsService {
   getPopularRooms() {
     return this.http.post<any>(`${this.baseUrl}/popular-rooms`, {})
   }
+
+  getReservedRooms(phoneNumber, requestType) {
+    return this.http.post<any>(`${this.baseUrl}/reserved-rooms`, { phoneNumber, requestType });
+  }
 }
