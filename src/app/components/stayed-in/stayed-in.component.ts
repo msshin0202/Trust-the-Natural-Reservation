@@ -10,6 +10,10 @@ interface User {
   email: string
 }
 
+interface Bill {
+  id: number
+}
+
 @Component({
   selector: 'app-stayed-in',
   templateUrl: './stayed-in.component.html',
@@ -27,6 +31,7 @@ export class StayedInComponent implements OnInit {
     lname: '',
     email: ''
   };
+  bill: Bill;
 
   constructor(private checkOutService: CheckoutService, private custUserService: CustUserService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
@@ -58,7 +63,7 @@ export class StayedInComponent implements OnInit {
     })
   }
 
-  checkOutCustomer(event) {
+  viewBalance(event) {
     event.preventDefault();
     this.checkOutService.checkOutCustomer(this.phoneNumber).subscribe(data => {
       console.log(data);
@@ -79,19 +84,25 @@ export class StayedInComponent implements OnInit {
     event.preventDefault();
     this.checkOutService.generateBill(this.phoneNumber, roomNumber).subscribe(data => {
       console.log(data);
+      this.bill = data;
       this.displayRooms();
+      this.viewBalance(event);
+      this.showSnackbar(event);
     });
   }
 
   showSnackbar(event): void {
+    event.preventDefault();
     var x = document.getElementById("snackbar");
     x.className = "show";
     // setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
   
   hideSnackbar(event): void {
+    event.preventDefault();
     var x = document.getElementById("snackbar");
     x.className = x.className.replace("show", "");
+    this.bill = null;
   }
 
 }

@@ -1,4 +1,5 @@
 <div id="snackbar">The total comes to ${{total}}
+  <div *ngIf="bill">Your bill ID is {{bill.id}}</div>
     <button class="pay"><a href="pay">Pay Now</a></button>
     <button class="pay" (click)="hideSnackbar($event)">Pay Later</button>
 </div>
