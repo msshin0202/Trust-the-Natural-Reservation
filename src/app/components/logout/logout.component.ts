@@ -9,18 +9,20 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent implements OnInit {
-
-  constructor(private cust_user: CustUserService, private router: Router, private auth: AuthService) { }
+  unLoggedInUserType = 'unknown';
+  constructor(private cust_user: CustUserService, private router: Router, private Auth: AuthService) { }
 
   ngOnInit() {
-    this.cust_user.logout().subscribe(data => {
-      if(data.success) {
-        this.router.navigate(['']);
-        this.auth.setLoggedIn(false);
-      } else {
-        window.alert('Some problem');
-      }
-    })
   }
 
+  logout() {
+    this.Auth.logout().subscribe(data => {
+      if (data.success) {
+        this.router.navigate(['/']);
+        this.Auth.setUserType(this.unLoggedInUserType);
+      } else {
+        window.alert("Could not log out. Please try again" + data.message);
+      }
+    });
+  }
 }

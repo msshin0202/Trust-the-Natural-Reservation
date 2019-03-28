@@ -8,6 +8,8 @@ const RESULT_EMAIL = "email";
 const POST_USERNAME_KEY = "username";
 const POST_PASSWORD_KEY = "password";
 const SESSION_USER_KEY = "user";
+const COOKIE_SESSION_ID_KEY = "sessionID";
+const SESSION_USER_TYPE_KEY = "userType";
 
 function employeeSignup($firstName, $lastName, $email, $password, $passwordConfirm, $gender, $role, $address)
 {
@@ -39,6 +41,7 @@ function employeeSignup($firstName, $lastName, $email, $password, $passwordConfi
                 $signupResult[RESULT_MESSAGE_KEY] = "Signup is Successful!";  
                 $signupResult[RESULT_EMAIL] = $escapedEmail;
                 session_start();
+                $_SESSION[SESSION_USER_TYPE_KEY] = 'employee';
             } else {
                 $signupResult[RESULT_SUCCESS_KEY] = false;
                 $signupResult[RESULT_MESSAGE_KEY] = "Error occurred during signup. Please try again.";    
@@ -84,6 +87,7 @@ function customerSignup($firstName, $lastName, $email, $phoneNumber, $password, 
                 $signupResult[RESULT_MESSAGE_KEY] = "Signup is Successful!";  
                 $signupResult[RESULT_EMAIL] = $escapedEmail;
                 session_start();
+                $_SESSION[SESSION_USER_TYPE_KEY] = 'customer';
             } else {
                 $signupResult[RESULT_SUCCESS_KEY] = false;
                 $signupResult[RESULT_MESSAGE_KEY] = "Error occurred during signup. Please try again.";    
@@ -114,4 +118,5 @@ if (isset($_POST) && !empty($_POST)) {
     }
 }
 
+setcookie(COOKIE_SESSION_ID_KEY, session_id(), 0, '/');
 echo json_encode($result);

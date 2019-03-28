@@ -23,7 +23,7 @@ export class EloginComponent implements OnInit {
     this.Auth.getEmployeeDetails(username, password).subscribe(data => {
       if(data.success) {
         this.router.navigate(['employee']);
-        this.Auth.setLoggedIn(true);
+        this.Auth.setUserType('employee');
       } else {
         window.alert(data.message);
       }

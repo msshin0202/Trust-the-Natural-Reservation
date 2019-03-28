@@ -1,7 +1,13 @@
 <?php
 require './connect.php';
 
+const COOKIE_SESSION_ID_KEY = "sessionID";
+
 $con = connect();
+
+session_id($_COOKIE[COOKIE_SESSION_ID_KEY]);
+session_start();
+
 $_POST = json_decode(file_get_contents('php://input'), true);
 
 const RESULT_SUCCESS_KEY = "success";
