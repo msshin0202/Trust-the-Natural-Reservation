@@ -15,9 +15,11 @@ import { SliderComponent } from './components/slider/slider.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
+import { PayComponent } from './components/pay/pay.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
-import { PayComponent } from './components/pay/pay.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,13 +34,15 @@ import { PayComponent } from './components/pay/pay.component';
     PayComponent,
     CloginComponent,
     EloginComponent,
-    EmplandingComponent
-
+    EmplandingComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgbModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: 'login',
@@ -74,17 +78,17 @@ import { PayComponent } from './components/pay/pay.component';
         component: PayComponent
       },
       {
-      path: 'elogin',
-      component: EloginComponent
-    },
-    {
-      path: 'employee',
-      component: EmplandingComponent
-    }
-      // {
-      //   path: '**',
-      //   component: PagenotfoundComponent
-      // }
+        path: 'elogin',
+        component: EloginComponent
+      },
+      {
+        path: 'employee',
+        component: EmplandingComponent
+      }, 
+      { 
+        path: 'signup',
+        component: SignupComponent
+      }
     ])
   ],
   providers: [AuthService, CustUserService, AuthGuard],

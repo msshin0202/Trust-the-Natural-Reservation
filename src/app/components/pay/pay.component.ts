@@ -24,19 +24,16 @@ export class PayComponent implements OnInit {
       const target = event.target;
       const bid = target.querySelector('#bid').value;
       const amount = target.querySelector('#amount').value;
-      const phoneNumber = target.querySelector('#phoneNumber').value;
       if (this.isCreditCard) {
         const cardHolderName = target.querySelector('#cardHolderName').value;
         const creditCardNumber = target.querySelector('#creditCardNumber').value;
         const expirary = target.querySelector('#expirary').value;
         const svc = target.querySelector('#svc').value;
         console.log(cardHolderName, creditCardNumber, expirary, svc);
-        this.payService.submitCreditCard(bid, amount, phoneNumber, this.isCash);
+        this.payService.submitCreditCard(bid, amount, this.isCash);
       } else {
-
-        this.payService.submitCash(bid, amount, phoneNumber, this.isCash);
+        this.payService.submitCash(bid, amount, this.isCash);
       }
-      console.log(bid, amount, phoneNumber);
   }
 
   creditCardPayment() {
