@@ -3,7 +3,7 @@
 
 <h3>Create Hotel Reservation for Customers</h3>
 
-<h3><a routerLink="/pay">Process Bill Payment</a></h3>
+<h3><a href="/pay">Process Bill Payment</a></h3>
 
 <div id="snackbar">The total comes to ${{total}}
     <button class="pay"><a href="pay">Pay Now</a></button>
@@ -12,6 +12,11 @@
 
 <form (submit)="checkInCustomer($event)">
     <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
-    <button (click)="generateBill($event)" type="submit">Generate Bill</button>
-    <button (click)="showSnackbar($event)" type="submit">Submit</button>
+    <button (click)="showSnackbar($event)" name="checkout" type="submit">Submit</button>
+</form>
+
+<form (submit)="generateBill($event)">
+    <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
+    <input type="radio" id="rooms" *ngFor = "let season of seasons" [value] = "season">{{season}}
+    <button (click)="showSnackbar($event)" name="bill">Generate Bill</button>
 </form>

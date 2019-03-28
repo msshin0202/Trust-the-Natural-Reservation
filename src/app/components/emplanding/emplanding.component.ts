@@ -26,7 +26,7 @@ export class EmplandingComponent implements OnInit {
     console.log(phoneNumber);
     this.checkOutService.checkOutCustomer(phoneNumber).subscribe(data => {
       console.log(data);
-      this.total = data.total;
+      this.total = data.total > data.paid ? data.total - data.paid : 0;
       console.log(this.total);
       localStorage.setItem('total', String(this.total));
     })

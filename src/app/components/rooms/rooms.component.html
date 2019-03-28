@@ -11,7 +11,7 @@
   </div>
 </form>
 <div id="snackbar">{{rooms.length}} rooms are available</div>
-<div [hidden]="!toggle">
+<div>
   <div class="cardbox" *ngFor="let item of rooms">
     <div class="card">
       <p>Room number: {{item.roomNumber}}</p>

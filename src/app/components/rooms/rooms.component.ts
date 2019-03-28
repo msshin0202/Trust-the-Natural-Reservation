@@ -13,19 +13,16 @@ export class RoomsComponent implements OnInit {
   baseUrl = 'http://localhost:3000/api';
   rooms = [];
   date = {};
-  toggle = false;
         
   constructor(private roomsService: RoomsService, private reservationService: ReservationService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.rooms = JSON.parse(localStorage.getItem('array')) === null ? [] : JSON.parse(localStorage.getItem('array'));
-    this.toggle = localStorage.getItem('toggle') == 'true';
   }
 
   ngOnDestroy(): void {
     localStorage.removeItem('array');
-    localStorage.removeItem('toggle');
   }
 
   getRooms(event): void {
@@ -42,9 +39,6 @@ export class RoomsComponent implements OnInit {
       this.rooms = data.data;
       localStorage.removeItem('array');
       localStorage.setItem('array', JSON.stringify(this.rooms));
-      localStorage.removeItem('toggle');
-      localStorage.setItem('toggle', 'true');
-      this.toggle = true;
     });
   }
 

@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class SignupService {
 
-  baseUrl = 'http://localhost:3000/api';
+  baseUrl = 'http://localhost/api';
 
   constructor(private http: HttpClient) { }
 
