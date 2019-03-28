@@ -24,7 +24,7 @@ export class CloginComponent implements OnInit {
       console.log(data);
       if(data.success) {
         this.router.navigate(['cust']);
-        this.Auth.setLoggedIn(true);
+        this.Auth.setUserType('customer');
       } else {
         window.alert(data.message);
       }
