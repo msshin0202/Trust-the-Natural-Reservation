@@ -10,13 +10,20 @@
     <button class="pay" (click)="hideSnackbar($event)">Pay Later</button>
 </div>
 
-<form (submit)="checkInCustomer($event)">
+<div id="rooms">
+    <div *ngFor="let item of rooms">
+        <p>Room number: {{item.roomNumber}}</p>
+        <p>${{item.price}}</p>
+        <button (click)="generateBill($event)">Generate Bill</button>
+    </div>
+</div>
+
+<form (submit)="checkOutCustomer($event)">
     <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
     <button (click)="showSnackbar($event)" name="checkout" type="submit">Submit</button>
 </form>
 
-<form (submit)="generateBill($event)">
+<form (submit)="displayRooms($event)">
     <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
-    <input type="radio" id="rooms" *ngFor = "let season of seasons" [value] = "season">{{season}}
-    <button (click)="showSnackbar($event)" name="bill">Generate Bill</button>
+    <button (click)="showRooms($event)" name="bill">Display Rooms</button>
 </form>

@@ -13,7 +13,12 @@ export class CheckoutService {
     return this.http.post<any>(`${this.baseUrl}/checkout`, { phoneNumber })
   }
 
+  displayRooms(phoneNumber) {
+    return this.http.post<any>(`${this.baseUrl}/display`, { phoneNumber })
+  }
+
   generateBill(phoneNumber) {
     return this.http.post<any>(`${this.baseUrl}/generate`, { phoneNumber })
   }
+  
 }
