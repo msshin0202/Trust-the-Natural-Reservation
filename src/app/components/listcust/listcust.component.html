@@ -1,4 +1,4 @@
-<h1>Customer List under Check-In Date</h1>
+<h1 id="needDate">Customer List under Check-In Date</h1>
 <div class="container" id="datepick">
   <form (submit)="chooseDate($event)" name="chooseDateForm">
     <div class="container">
@@ -18,7 +18,7 @@
       <p>First Name: {{customer.firstName}}</p>
       <p>Last Name: {{customer.lastName}}</p>
       <p>Check-out date: {{customer.checkOutDate}}</p>
-      <!-- <a [routerLink]="item.roomNumber">See detail</a> -->
+      <p>Room Number: {{customer.roomNumber}}</p>
 
     </div>
   </div>

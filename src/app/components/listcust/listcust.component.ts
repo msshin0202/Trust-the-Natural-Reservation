@@ -23,14 +23,21 @@ export class ListcustComponent implements OnInit {
     console.log(typeof(date));
     this.listcust.getListCust(date).subscribe(data => {
       console.log(data);
-    this.customers = data;})
+    this.customers = data;});
+
+    var header = document.getElementById("needDate");
+    var t = document.createTextNode(":"+date);
+    header.appendChild(t);
   }
 
   showList(){
     var x = document.getElementById("datepick");
     var y = document.getElementById("list");
+
     x.style.display = "none";
     y.style.display = "block";
+
+
 
   }
 
