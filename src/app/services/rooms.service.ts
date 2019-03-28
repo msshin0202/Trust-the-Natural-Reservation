@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Room } from './room';
+
 
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Room } from './room';
 })
 export class RoomsService {
   baseUrl = 'http://localhost:3000/api';
-  rooms: Room[];
+  rooms: [];
 
   constructor(private http: HttpClient) {}
 

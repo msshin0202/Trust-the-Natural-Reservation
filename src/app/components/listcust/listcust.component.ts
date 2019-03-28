@@ -22,4 +22,8 @@ export class ListcustComponent implements OnInit {
       console.log(data);})
   }
 
+  showList(event){
+    event.preventDefault();
+  }
+
 }

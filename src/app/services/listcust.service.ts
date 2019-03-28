@@ -10,6 +10,7 @@ baseUrl = 'http://localhost:3000/api';
 
   getListCust(date){
     console.log("getcustlist")
-    return this.http.post<any>(`${this.baseUrl}/listcust`, { date })
+    console.log(date)
+    return this.http.post<any[]>(`${this.baseUrl}/listcust`, { date })
   }
 }
