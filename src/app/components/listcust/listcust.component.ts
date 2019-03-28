@@ -21,22 +21,13 @@ export class ListcustComponent implements OnInit {
     event.preventDefault();
     const target = event.target;
     this.date = target.querySelector('#checkInDate').value;
-    console.log(typeof(this.date));
     this.listcust.getListCust(this.date).subscribe(data => {
-      console.log(data);
     this.customers = data;});
-
-    // var header = document.getElementById("needDate");
-    // header.innerHTML("Customer List under Check-In Date: " + date);
-
-
   }
 
   showList(){
-    //var x = document.getElementById("datepick");
     var y = document.getElementById("list");
 
-  //  x.style.display = "none";
     y.style.display = "block";
 
 
