@@ -1,14 +1,27 @@
 <p>
   listcust works!
 </p>
-<form (submit)="chooseDate($event)" name="chooseDateForm">
-  <div class="container">
-    <h4>Choose Date:</h4>
-    <div>
-      <input type="date" autocomplete="off" id="checkInDate">
-    </div>
+<div class="container" id="datepick">
+  <form (submit)="chooseDate($event)" name="chooseDateForm">
+    <div class="container">
+      <h4>Choose Date:</h4>
       <div>
-        <button (click)="showList($event)" type="submit" id="submit">Submit</button>
-      </div>
+        <input type="date" autocomplete="off" id="checkInDate">
     </div>
-</form>
+        <div>
+          <button (click)="showList($event)" type="submit" id="submit">Submit</button>
+        </div>
+      </div>
+  </form>
+</div>
+<div id="list" style="display: none;">
+  <div class="cardbox" *ngFor="let item of rooms">
+    <div class="card">
+      <p>Room number: {{item.roomNumber}}</p>
+      <p>No. of beds: {{item.numberOfBeds}}</p>
+      <p>${{item.price}}</p>
+      <!-- <a [routerLink]="item.roomNumber">See detail</a> -->
+      <button (click)="reserve($event, item.roomNumber)" type="submit">Make reservation</button>
+    </div>
+  </div>
+</div>

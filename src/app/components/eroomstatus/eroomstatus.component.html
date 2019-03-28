@@ -1,9 +1,9 @@
-<p>
-  eroomstatus works!
-</p>
+<h1>Room Status</h1>
 <div *ngFor="let item of rooms" style="display:inline-block;min-width:calc(33.33% - 20px);margin:10px;padding:10px;box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);">
   <p>Room number: {{item.roomNumber}}</p>
   <p>No. of beds: {{item.numberOfBeds}}</p>
-  <p>${{item.price}}</p>
+  <p>Price: ${{item.price}}</p>
+  <p>Available/Occupied: {{item.status}}</p>
+  <p>Cleanliness: {{item.cleanliness}}</p>
 
 </div>

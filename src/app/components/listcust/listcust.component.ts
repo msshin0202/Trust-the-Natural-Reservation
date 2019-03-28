@@ -24,6 +24,11 @@ export class ListcustComponent implements OnInit {
 
   showList(event){
     event.preventDefault();
+    var x = document.getElementById("datepick");
+    var y = document.getElementById("list");
+    x.style.display = "none";
+    y.style.display = "block";
+    
   }
 
 }
