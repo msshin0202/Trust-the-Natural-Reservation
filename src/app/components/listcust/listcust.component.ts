@@ -7,8 +7,10 @@ import { ListcustService } from '../../services/listcust.service';
   templateUrl: './listcust.component.html',
   styleUrls: ['./listcust.component.scss']
 })
-export class ListcustComponent implements OnInit {
 
+export class ListcustComponent implements OnInit {
+  baseUrl = 'http://localhost:3000/api';
+  customers = [];
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private listcust: ListcustService) { }
 
   ngOnInit() {
@@ -19,16 +21,16 @@ export class ListcustComponent implements OnInit {
     const target = event.target;
     const date = target.querySelector('#checkInDate').value;
     this.listcust.getListCust(date).subscribe(data => {
-      console.log(data);})
+      console.log(data);
+    this.customers = data;})
   }
 
-  showList(event){
-    event.preventDefault();
+  showList(){
     var x = document.getElementById("datepick");
     var y = document.getElementById("list");
     x.style.display = "none";
     y.style.display = "block";
-    
+
   }
 
 }
