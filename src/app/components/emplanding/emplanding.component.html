@@ -1,34 +1,16 @@
+<app-logout></app-logout>
 <h1> Welcome to the Employees' Site! </h1>
 <h2>(And YES, you can access to data that customers won't know)</h2>
 
 <h3>Create Hotel Reservation for Customers</h3>
-
-<h3><a href="/pay">Process Bill Payment</a></h3>
 
 <form (submit)="checkOutCustomer($event)">
     <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
     <button type="submit">Check Out</button>
 </form>
 
-<!-- <div id="snackbar">The total comes to ${{total}}
-    <button class="pay"><a href="pay">Pay Now</a></button>
-    <button class="pay" (click)="hideSnackbar($event)">Pay Later</button>
-</div>
-
-<div id="rooms">
-    <div *ngFor="let item of rooms">
-        <p>Room number: {{item.roomNumber}}</p>
-        <p>${{item.price}}</p>
-        <button (click)="generateBill($event)">Generate Bill</button>
-    </div>
-</div>
-
-<form (submit)="checkOutCustomer($event)">
-    <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
-    <button (click)="showSnackbar($event)" name="checkout" type="submit">View Balance</button>
-</form>
-
-<form (submit)="displayRooms($event)">
-    <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
-    <button (click)="showRooms($event)" name="bill">Display Rooms</button>
-</form> -->
+<h3><a  routerLink="/roomstatus">Check Rooms' Status</a></h3>
+<h3><a  routerLink="/checkedincust">Get List of Customer Check In</a></h3>
+<h3><a routerLink="/pay">Process Bill Payment</a></h3>
+<h3><a routerLink="/popular-rooms">View Trending Rooms</a></h3>
+<h3><a routerLink="/view-dirty-rooms">View List of Rooms to be Cleaned</a></h3>

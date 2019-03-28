@@ -1,7 +1,13 @@
 <?php
 require './connect.php';
 
+const COOKIE_SESSION_ID_KEY = "sessionID";
+
 $con = connect();
+
+session_id($_COOKIE[COOKIE_SESSION_ID_KEY]);
+session_start();
+
 $_POST = json_decode(file_get_contents('php://input'), true);
 
 const RESULT_SUCCESS_KEY = "success";
@@ -54,7 +60,7 @@ $remainingBill = $checkBill["amount"] - $totalAmountPaid["totalAmount"];
       $submitResult[RESULT_MESSAGE_KEY] = "bill {$bid} has already been paid in full!";
       //need to handle case where the amount enetered will add to more than max
     } else if ($amount > $checkBill["amount"] || $amount > $remainingBill) {
-      $submitResult[RESULT_MESSAGE_KEY] = "${$amount} is more than the bill amount! Please enter an amount of ${$remainingBill} or less.";
+      $submitResult[RESULT_MESSAGE_KEY] = "\${$amount} is more than the bill amount! Please enter an amount of \${$remainingBill} or less.";
     } else if (mysqli_query($con, $insertTransactionQuery) && mysqli_query($con, $insertPaysQuery)) {
         $submitResult[RESULT_SUCCESS_KEY] = true;
         $submitResult[RESULT_MESSAGE_KEY] = "Payment has been processed!";

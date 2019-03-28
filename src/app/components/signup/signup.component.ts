@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
         password, passwordConfirm, gender, role, address).subscribe(data => {
         if (data.success) {
           this.router.navigate(['employee']);
-          this.Auth.setLoggedIn(true);
+          this.Auth.setUserType('employee');
           window.alert(data.message);
         } else {
           window.alert(data.message);
@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
         password, passwordConfirm).subscribe(data => { 
         if (data.success) {
           this.router.navigate(['cust']);
-          this.Auth.setLoggedIn(true);
+          this.Auth.setUserType('customer');
           window.alert(data.message);
         } else {
           window.alert(data.message);

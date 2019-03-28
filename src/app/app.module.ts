@@ -19,8 +19,14 @@ import { PayComponent } from './components/pay/pay.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
+import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.component';
+import { ListcustComponent } from './components/listcust/listcust.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StayedInComponent } from './components/stayed-in/stayed-in.component';
+import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
+import { CheckinComponent } from './components/checkin/checkin.component';
+import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +43,13 @@ import { StayedInComponent } from './components/stayed-in/stayed-in.component';
     EloginComponent,
     EmplandingComponent,
     SignupComponent,
-    StayedInComponent
+    StayedInComponent,
+    EroomstatusComponent,
+    ListcustComponent,
+    SignupComponent,
+    ViewDirtyRoomsComponent,
+    CheckinComponent,
+    PopularRoomsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +73,8 @@ import { StayedInComponent } from './components/stayed-in/stayed-in.component';
       {
         path: 'cust',
         component: CustlandingComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer'] }
       },
       {
         path: '',
@@ -69,7 +82,9 @@ import { StayedInComponent } from './components/stayed-in/stayed-in.component';
       },
       {
         path: 'rooms',
-        component: RoomsComponent
+        component: RoomsComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer', 'employee'] }
       },
       {
         path: 'confirmation',
@@ -77,7 +92,9 @@ import { StayedInComponent } from './components/stayed-in/stayed-in.component';
       },
       {
         path: 'pay',
-        component: PayComponent
+        component: PayComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer', 'employee'] }
       },
       {
         path: 'elogin',
@@ -85,15 +102,33 @@ import { StayedInComponent } from './components/stayed-in/stayed-in.component';
       },
       {
         path: 'employee',
-        component: EmplandingComponent
-      }, 
-      { 
+        component: EmplandingComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['employee'] }
+      },
+      {
         path: 'signup',
         component: SignupComponent
       },
       { 
         path: 'display',
         component: StayedInComponent
+      },
+      {
+        path: 'roomstatus',
+        component: EroomstatusComponent
+      },
+      {
+        path: 'checkedincust',
+        component: ListcustComponent
+      },
+      {
+        path: 'view-dirty-rooms',
+        component: ViewDirtyRoomsComponent
+      },
+      {
+        path: 'popular-rooms',
+        component: PopularRoomsComponent
       }
     ])
   ],
