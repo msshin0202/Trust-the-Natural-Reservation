@@ -22,6 +22,7 @@ import { EmplandingComponent } from './components/emplanding/emplanding.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
+import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CheckinComponent } from './components/checkin/checkin.component';
     EmplandingComponent,
     SignupComponent,
     ViewDirtyRoomsComponent,
-    CheckinComponent
+    CheckinComponent,
+    PopularRoomsComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +105,10 @@ import { CheckinComponent } from './components/checkin/checkin.component';
       {
         path: 'view-dirty-rooms',
         component: ViewDirtyRoomsComponent
+      },
+      {
+        path: 'popular-rooms',
+        component: PopularRoomsComponent
       }
     ])
   ],

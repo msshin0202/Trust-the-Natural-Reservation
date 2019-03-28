@@ -20,4 +20,8 @@ export class RoomsService {
   cleanRoom(roomNumber){
     return this.http.post<any>(`${this.baseUrl}/clean-room`, { roomNumber })
   }
+
+  getPopularRooms() {
+    return this.http.post<any>(`${this.baseUrl}/popular-rooms`, {})
+  }
 }
