@@ -19,10 +19,13 @@ import { PayComponent } from './components/pay/pay.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
+import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.component';
+import { ListcustComponent } from './components/listcust/listcust.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +41,8 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
     CloginComponent,
     EloginComponent,
     EmplandingComponent,
+    EroomstatusComponent,
+    ListcustComponent,
     SignupComponent,
     ViewDirtyRoomsComponent,
     CheckinComponent,
@@ -102,7 +107,16 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
         path: 'signup',
         component: SignupComponent
       },
-      {
+
+    {
+      path: 'roomstatus',
+      component: EroomstatusComponent
+    },
+    {
+      path: 'checkedincust',
+      component: ListcustComponent
+    },{
+
         path: 'view-dirty-rooms',
         component: ViewDirtyRoomsComponent
       },
