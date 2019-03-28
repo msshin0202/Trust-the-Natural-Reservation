@@ -1,0 +1,20 @@
+<form (submit)="getDirtyRooms($event)">
+  <div class="container">
+    <h4>What rooms need to be cleaned?</h4>
+    <div>
+      <button (click)="myFunction($event)" type="submit" id="submit">View Dirty Rooms</button>
+    </div>
+  </div>
+</form>
+<div id="snackbar">{{dirtyRooms.length}} rooms need to be cleaned</div>
+<div>
+  <div class="cardbox" *ngFor="let item of dirtyRooms">
+    <div class="card">
+      <p>Room number: {{item.roomNumber}}</p>
+      <p>No. of beds: {{item.numberOfBeds}}</p>
+      <p>Assigned to: {{item.firstName}} {{item.lastName}}</p>
+      <!-- <a [routerLink]="item.roomNumber">See detail</a> -->
+      <button (click)="cleanRoom($event, item.roomNumber)" type="submit">Clean Room</button>
+    </div>
+  </div>
+</div>

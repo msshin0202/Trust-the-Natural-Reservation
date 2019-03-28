@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { Room } from './room';
+import { HttpClient } from '@angular/common/http';
+// import { Room } from './room';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomsService {
   baseUrl = 'http://localhost:3000/api';
-  rooms: Room[];
+  // rooms: Room[];
 
   constructor(private http: HttpClient) {}
 
   getAvailableRooms(date) {
     return this.http.post<any>(`${this.baseUrl}/rooms`, { date })
+  }
+
+  getDirtyRooms(){
+    return this.http.post<any>(`${this.baseUrl}/view-dirty-rooms`, {})
+  }
+
+  cleanRoom(roomNumber){
+    return this.http.post<any>(`${this.baseUrl}/clean-room`, { roomNumber })
   }
 }
