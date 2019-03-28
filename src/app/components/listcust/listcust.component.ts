@@ -11,6 +11,7 @@ import { ListcustService } from '../../services/listcust.service';
 export class ListcustComponent implements OnInit {
   baseUrl = 'http://localhost:3000/api';
   customers = [];
+  date = "";
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private listcust: ListcustService) { }
 
   ngOnInit() {
@@ -19,22 +20,23 @@ export class ListcustComponent implements OnInit {
   chooseDate(event){
     event.preventDefault();
     const target = event.target;
-    const date = target.querySelector('#checkInDate').value;
-    console.log(typeof(date));
-    this.listcust.getListCust(date).subscribe(data => {
+    this.date = target.querySelector('#checkInDate').value;
+    console.log(typeof(this.date));
+    this.listcust.getListCust(this.date).subscribe(data => {
       console.log(data);
     this.customers = data;});
 
-    var header = document.getElementById("needDate");
-    var t = document.createTextNode(":"+date);
-    header.appendChild(t);
+    // var header = document.getElementById("needDate");
+    // header.innerHTML("Customer List under Check-In Date: " + date);
+
+
   }
 
   showList(){
-    var x = document.getElementById("datepick");
+    //var x = document.getElementById("datepick");
     var y = document.getElementById("list");
 
-    x.style.display = "none";
+  //  x.style.display = "none";
     y.style.display = "block";
 
 
