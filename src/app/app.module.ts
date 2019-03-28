@@ -105,6 +105,10 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
       {
         path: 'view-dirty-rooms',
         component: ViewDirtyRoomsComponent
+      },
+      {
+        path: 'update-profile',
+        component: UpdateProfileComponent
       }
     ])
   ],

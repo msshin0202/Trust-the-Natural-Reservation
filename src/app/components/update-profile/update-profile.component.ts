@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UpdateService } from '../../services/update.service'
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-update-profile',
@@ -21,7 +23,7 @@ export class UpdateProfileComponent implements OnInit {
   isEmployee: boolean = false;
   genders = [];
 
-  constructor(private updateService: UpdateService) { }
+  constructor(private updateService: UpdateService, private router: Router, private Auth: AuthService) { }
 
   ngOnInit() {
     this.passwordConfirmation = "";
@@ -58,7 +60,15 @@ export class UpdateProfileComponent implements OnInit {
         firstName: this.firstName,
         lastName: this.lastName,
         password: this.password
-      }).subscribe(data => window.alert(data.message));
+      }).subscribe(data => {
+        if (data.success) {
+          this.router.navigate(['cust']);
+          this.Auth.setUserType('customer');
+          window.alert(data.message);
+        } else {
+          window.alert(data.message);
+        }
+      });
     } else if (this.isEmployee) {
       this.updateService.updateProfile({
         firstName: this.firstName,
@@ -67,7 +77,15 @@ export class UpdateProfileComponent implements OnInit {
         gender: this.gender,
         role: this.role,
         address: this.address
-      }).subscribe(data => window.alert(data.message));
+      }).subscribe(data => {
+        if (data.success) {
+          this.router.navigate(['employee']);
+          this.Auth.setUserType('employee');
+          window.alert(data.message);
+        } else {
+          window.alert(data.message);
+        }
+      });
     }
   }
 }

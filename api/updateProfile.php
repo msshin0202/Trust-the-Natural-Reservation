@@ -37,6 +37,9 @@ if ($userType == "customer") {
         if (($conn->query($updateSql) === TRUE)) {
             $updateResult[RESULT_SUCCESS_KEY] = true;
             $updateResult[RESULT_MESSAGE_KEY] = "Update is Successful!";  
+        } else if (strlen($phoneNumber) !== 10) {
+            $updateResult[RESULT_SUCCESS_KEY] = false;
+            $updateResult[RESULT_MESSAGE_KEY] = "Please Enter a Valid Phone Number!";  
         } else {
             $updateResult[RESULT_SUCCESS_KEY] = false;
             $updateResult[RESULT_MESSAGE_KEY] = "Update is Unsuccessful!";  
