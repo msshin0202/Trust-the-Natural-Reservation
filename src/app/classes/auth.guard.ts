@@ -22,8 +22,13 @@ export class AuthGuard implements CanActivate {
           let userType = data.message;
           let canNavigate = EXPECTED_USER_TYPE_ALLOWED_ARRAY.includes(userType);
           if (!canNavigate) {
-            console.log(this.router.url);
-            this.router.navigate([state.url]);
+            if (userType == 'customer') {
+              this.router.navigate(['/cust']);
+            } else if (userType == 'employee'){
+              this.router.navigate(['/employee'])
+            } else {
+              this.router.navigate(['/']);
+            }
           }
           return canNavigate;
         }
