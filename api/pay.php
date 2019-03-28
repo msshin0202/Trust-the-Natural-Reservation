@@ -54,7 +54,7 @@ $remainingBill = $checkBill["amount"] - $totalAmountPaid["totalAmount"];
       $submitResult[RESULT_MESSAGE_KEY] = "bill {$bid} has already been paid in full!";
       //need to handle case where the amount enetered will add to more than max
     } else if ($amount > $checkBill["amount"] || $amount > $remainingBill) {
-      $submitResult[RESULT_MESSAGE_KEY] = "{$amount} is more than the bill amount! Please enter an amount of {$remainingBill} or less.";
+      $submitResult[RESULT_MESSAGE_KEY] = "${$amount} is more than the bill amount! Please enter an amount of ${$remainingBill} or less.";
     } else if (mysqli_query($con, $insertTransactionQuery) && mysqli_query($con, $insertPaysQuery)) {
         $submitResult[RESULT_SUCCESS_KEY] = true;
         $submitResult[RESULT_MESSAGE_KEY] = "Payment has been processed!";

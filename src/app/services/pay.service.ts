@@ -17,7 +17,6 @@ export class PayService {
   constructor(private router: Router, private http: HttpClient) { }
 
   submitCash(bid, amount, isCash){
-    console.log("submitted via cash");
     return this.http.post<payData>(`${this.baseUrl}/pay`, { bid, amount, isCash }).subscribe((data) => {
       window.alert(data.message);
       if (data.success) {
@@ -28,7 +27,6 @@ export class PayService {
   // for this project, although we get input from customer about payment info, we do not check whether
   // payment is valid nor do we store it in the DB, thus we don't need to pass it onto the backend to process the information.
   submitCreditCard(bid, amount, isCash) {
-    console.log("submitted via credit");
     return this.http.post<payData>(`${this.baseUrl}/pay`, { bid, amount, isCash }).subscribe((data) => {
       window.alert(data.message);
       if (data.success){
