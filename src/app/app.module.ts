@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
 import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
+import { ViewReservationsComponent } from './components/view-reservations/view-reservations.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
     SignupComponent,
     ViewDirtyRoomsComponent,
     CheckinComponent,
-    PopularRoomsComponent
+    PopularRoomsComponent,
+    ViewReservationsComponent
   ],
   imports: [
     BrowserModule,
