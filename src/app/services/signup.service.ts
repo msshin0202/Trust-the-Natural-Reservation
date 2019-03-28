@@ -16,7 +16,7 @@ export class SignupService {
       return this.http.post<any>(`${this.baseUrl}/signup`, { 
         signupKind, firstName, lastName, email, 
         password, passwordConfirm, gender, role, address
-      });
+      }, { withCredentials: true });
     }
 
   submitCustomerSignUp(firstName, lastName, email, phoneNumber,
@@ -25,6 +25,6 @@ export class SignupService {
       return this.http.post<any>(`${this.baseUrl}/signup`, { 
         signupKind, firstName, lastName, email, phoneNumber, 
         password, passwordConfirm
-      });
+      }, { withCredentials: true });
     }
 }
