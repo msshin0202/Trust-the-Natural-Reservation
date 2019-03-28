@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
+import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
     SignupComponent,
     ViewDirtyRoomsComponent,
     CheckinComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    PopularRoomsComponent
   ],
   imports: [
     BrowserModule,
@@ -121,8 +123,13 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
         component: ViewDirtyRoomsComponent
       },
       {
+<<<<<<< HEAD
         path: 'update-profile',
         component: UpdateProfileComponent
+=======
+        path: 'popular-rooms',
+        component: PopularRoomsComponent
+>>>>>>> master
       }
     ])
   ],

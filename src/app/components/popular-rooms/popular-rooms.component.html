@@ -1,0 +1,19 @@
+<form (submit)="getPopularRooms($event)">
+  <div class="container">
+    <h4 align="center">Which rooms are trending?</h4>
+    <div>
+      <button (click)="myFunction($event)" type="submit" id="submit">View Trending Rooms</button>
+    </div>
+  </div>
+</form>
+<div id="snackbar">{{popularRooms.length}} rooms have been booked more than 2 times</div>
+<div>
+  <div class="cardbox" *ngFor="let item of popularRooms">
+    <div class="card">
+      <p align="center">Room number: {{item.roomNumber}}</p>
+      <p align="center">No. of beds: {{item.numberOfBeds}}</p>
+      <p align="center">Price: {{item.price}}</p>
+      <button routerLink="/rooms" type="submit">Book Room</button>
+    </div>
+  </div>
+</div>
