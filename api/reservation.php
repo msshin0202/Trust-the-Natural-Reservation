@@ -1,6 +1,6 @@
 <?php
 
-require '../connect.php';
+require './connect.php';
 
 $reservation = [];
 $con = connect();
