@@ -7,6 +7,13 @@ interface myData {
   success: boolean
 }
 
+interface User {
+  phoneNumber: string,
+  fname: string,
+  lname: string,
+  email: string
+}
+
 interface isLoggedIn {
   status: boolean
 }
@@ -25,6 +32,10 @@ export class CustUserService {
 
   getData() {
     return this.http.get<myData>(`${this.baseUrl}/databasemock`);
+  }
+
+  getUserInfo(phoneNumber) {
+    return this.http.get<User>(`${this.baseUrl}/userinfo`);
   }
 
   isLoggedIn(): Observable<isLoggedIn> {

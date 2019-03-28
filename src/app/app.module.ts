@@ -20,6 +20,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { EloginComponent } from './components/elogin/elogin.component';
 import { EmplandingComponent } from './components/emplanding/emplanding.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StayedInComponent } from './components/stayed-in/stayed-in.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CloginComponent,
     EloginComponent,
     EmplandingComponent,
-    SignupComponent
+    SignupComponent,
+    StayedInComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +90,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       { 
         path: 'signup',
         component: SignupComponent
+      },
+      { 
+        path: 'display',
+        component: StayedInComponent
       }
     ])
   ],

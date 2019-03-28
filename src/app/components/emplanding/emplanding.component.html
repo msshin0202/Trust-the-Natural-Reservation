@@ -5,7 +5,12 @@
 
 <h3><a href="/pay">Process Bill Payment</a></h3>
 
-<div id="snackbar">The total comes to ${{total}}
+<form (submit)="checkOutCustomer($event)">
+    <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
+    <button type="submit">Check Out</button>
+</form>
+
+<!-- <div id="snackbar">The total comes to ${{total}}
     <button class="pay"><a href="pay">Pay Now</a></button>
     <button class="pay" (click)="hideSnackbar($event)">Pay Later</button>
 </div>
@@ -20,10 +25,10 @@
 
 <form (submit)="checkOutCustomer($event)">
     <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
-    <button (click)="showSnackbar($event)" name="checkout" type="submit">Submit</button>
+    <button (click)="showSnackbar($event)" name="checkout" type="submit">View Balance</button>
 </form>
 
 <form (submit)="displayRooms($event)">
     <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
     <button (click)="showRooms($event)" name="bill">Display Rooms</button>
-</form>
+</form> -->
