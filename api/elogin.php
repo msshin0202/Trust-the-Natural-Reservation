@@ -54,3 +54,4 @@ if (isset($_POST) && !empty($_POST)) {
 
 setcookie(COOKIE_SESSION_ID_KEY, session_id(), 0, '/');
 echo json_encode($result);
+?>

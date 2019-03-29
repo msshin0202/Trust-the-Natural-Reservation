@@ -1,0 +1,38 @@
+<app-logout></app-logout>
+<div class="divider"></div>
+  <h1>View Your Reservations</h1>
+<div class="divider"></div>
+<div>
+  <p>
+    Reservation for User: {{ firstName }} {{ lastName }}
+  </p>
+  <div *ngIf=isEmployee class="divider">
+    <p>
+      <input type="text" [(ngModel)]="phoneNumber" placeholder="Enter Phone Number">
+      <button (click)="getReservedRooms()" type="submit">Check Reservation</button>
+    </p>
+  </div>
+  <div *ngIf=isCustomer class="divider">
+    <p>
+      <button (click)="getReservedRooms()" type="submit">Click Here to Check Reservation</button>
+    </p>
+  </div>
+  <div id="list">
+    <div class="cardbox" *ngFor="let res of reservations" style="display:inline-block;min-width:calc(33.33% - 20px);margin:10px;padding:10px;box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);">
+      <div class="card" id>
+        <p>Reservation Number: {{res.reservationNumber}}</p>
+        <p>Room Number: {{res.roomNumber}}</p>
+        <p>Check-in date: {{res.checkInDate}}</p>
+        <p>Check-out date: {{res.checkOutDate}}</p>
+        <p>Number of beds: {{res.numberOfBeds}}</p>
+        <button (click)="cancelReservation(res.reservationNumber)" type="submit" *ngIf=isEmployee>Cancel Reservation</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf=isEmployee>
+    <button (click)="goBackToEmpLanding()" type="submit">Go Back to Dashboard</button>
+  </div>
+  <div *ngIf=isCustomer>
+    <button (click)="goBackToCustLanding()" type="submit">Go Back to Dashboard</button>
+  </div>
+</div>
