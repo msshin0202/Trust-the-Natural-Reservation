@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
+import { EroomstatusService } from '../../services/eroomstatus.service';
 
 @Component({
   selector: 'app-emplanding',
@@ -11,7 +12,7 @@ export class EmplandingComponent implements OnInit {
   rooms = [];
   phoneNumber = '';
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute, private EroomstatusService: EroomstatusService) { }
 
   ngOnInit() {
     this.total = localStorage.getItem('total') === null ? 0 : +localStorage.getItem('total');
@@ -22,5 +23,4 @@ export class EmplandingComponent implements OnInit {
     localStorage.removeItem('total');
     localStorage.removeItem('rooms');
   }
-
 }

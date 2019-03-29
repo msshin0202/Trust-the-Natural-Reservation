@@ -13,7 +13,6 @@ interface RoomInfo {
   price: number,
   numberOfBeds: number
 }
-
 @Component({
   selector: 'app-checkin',
   templateUrl: './checkin.component.html',

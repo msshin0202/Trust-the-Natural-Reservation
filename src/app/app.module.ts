@@ -23,10 +23,10 @@ import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.compo
 import { ListcustComponent } from './components/listcust/listcust.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StayedInComponent } from './components/stayed-in/stayed-in.component';
+import { CheckoutCheckinComponent } from './components/checkout-checkin/checkout-checkin.component';
 import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
 import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
-import { CheckoutCheckinComponent } from './components/checkout-checkin/checkout-checkin.component';
 
 
 @NgModule({
@@ -43,15 +43,14 @@ import { CheckoutCheckinComponent } from './components/checkout-checkin/checkout
     CloginComponent,
     EloginComponent,
     EmplandingComponent,
-    SignupComponent,
     StayedInComponent,
     EroomstatusComponent,
     ListcustComponent,
     SignupComponent,
     ViewDirtyRoomsComponent,
     CheckinComponent,
-    PopularRoomsComponent,
-    CheckoutCheckinComponent
+    CheckoutCheckinComponent,
+    PopularRoomsComponent
   ],
   imports: [
     BrowserModule,
