@@ -35,6 +35,7 @@ export class CheckinComponent implements OnInit {
   }
 
   viewRoomInformation(event) {
+    event.preventDefault();
     this.checkin.checkInCustomer(this.reservationNumber).subscribe(data => {
       this.roomInfo = data;
       console.log("got data from backend");

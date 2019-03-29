@@ -11,7 +11,8 @@ interface User {
 }
 
 interface Bill {
-  id: number
+  id: number,
+  amount: number
 }
 
 @Component({
@@ -42,10 +43,10 @@ export class StayedInComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.total = localStorage.getItem('total') === null ? 0 : +localStorage.getItem('total');
-    this.rooms = localStorage.getItem('rooms') === null ? [] : JSON.parse(localStorage.getItem('rooms'));
+    this.total = localStorage.getItem('total') === null ? this.total : +localStorage.getItem('total');
+    this.rooms = localStorage.getItem('rooms') === null ? this.rooms : JSON.parse(localStorage.getItem('rooms'));
     this.phoneNumber = localStorage.getItem('phoneNumber') === null ? this.phoneNumber : localStorage.getItem('phoneNumber');
-    // console.log(this.phoneNumber);
+    console.log(this.total);
     this.displayRooms();
     this.getUserInfo();
   }
@@ -64,8 +65,8 @@ export class StayedInComponent implements OnInit {
     })
   }
 
-  viewBalance(event) {
-    event.preventDefault();
+  viewBalance() {
+    // event.preventDefault();
     this.checkOutService.checkOutCustomer(this.phoneNumber).subscribe(data => {
       console.log(data);
       this.total = +data.total > +data.paid ? +data.total - +data.paid : 0;
@@ -87,7 +88,7 @@ export class StayedInComponent implements OnInit {
       console.log(data);
       this.bill = data;
       this.displayRooms();
-      this.viewBalance(event);
+      this.viewBalance();
       this.showSnackbar(event);
     });
   }
@@ -96,6 +97,7 @@ export class StayedInComponent implements OnInit {
     event.preventDefault();
     var x = document.getElementById("snackbar");
     x.className = "show";
+    this.viewBalance();
     // setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
   
