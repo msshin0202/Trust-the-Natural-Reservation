@@ -1,20 +1,33 @@
+<app-logout></app-logout>
 <div class="divider"></div>
   <h1>View Your Reservations</h1>
-</div>
 <div class="divider"></div>
 <div>
   <p>
-    Reservation for User :{{ email }}
+    Reservation for User: {{ firstName }} {{ lastName }}
   </p>
-  <div id="snackbar">{{rooms.length}} rooms are available</div>
-  <div [hidden]="!toggle">
-    <div class="cardbox" *ngFor="let item of rooms">
-    <div class="card">
-      <p>Room number: {{item.roomNumber}}</p>
-      <p>No. of beds: {{item.numberOfBeds}}</p>
-      <p>${{item.price}}</p>
-      <!-- <a [routerLink]="item.roomNumber">See detail</a> -->
-      <!-- <button (click)="reserve($event, item.roomNumber)" type="submit">Make reservation</button> -->
+  <div *ngIf=isEmployee class="divider">
+    <p>
+      <input type="text" [(ngModel)]="phoneNumber">
+      <button (click)="getReservedRooms()" type="submit">Check Reservation</button>
+    </p>
+  </div>
+  <div id="list" >
+    <div class="cardbox" *ngFor="let res of reservations" style="display:inline-block;min-width:calc(33.33% - 20px);margin:10px;padding:10px;box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);">
+      <div class="card" id>
+        <p>Reservation Number: {{res.reservationNumber}}</p>
+        <p>Room Number: {{res.roomNumber}}</p>
+        <p>Check-in date: {{res.checkInDate}}</p>
+        <p>Check-out date: {{res.checkOutDate}}</p>
+        <p>Number of beds: {{res.numberOfBeds}}</p>
+        <button (click)="cancelReservation(res.reservationNumber)" type="submit" *ngIf=isEmployee>Cancel Reservation</button>
+      </div>
     </div>
   </div>
+  <div *ngIf=isEmployee>
+    <button (click)="goBackToEmpLanding()" type="submit">Go Back to Dashboard</button>
+  </div>
+  <div *ngIf=isCustomer>
+    <button (click)="goBackToCustLanding()" type="submit">Go Back to Dashboard</button>
+  </div> 
 </div>

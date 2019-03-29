@@ -109,22 +109,26 @@ import { ViewReservationsComponent } from './components/view-reservations/view-r
         path: 'signup',
         component: SignupComponent
       },
-
-    {
-      path: 'roomstatus',
-      component: EroomstatusComponent
-    },
-    {
-      path: 'checkedincust',
-      component: ListcustComponent
-    },{
-
+      {
+        path: 'roomstatus',
+        component: EroomstatusComponent
+      },
+      {
+        path: 'checkedincust',
+        component: ListcustComponent
+      },{
         path: 'view-dirty-rooms',
         component: ViewDirtyRoomsComponent
       },
       {
         path: 'popular-rooms',
         component: PopularRoomsComponent
+      },
+      {
+        path: 'view-reservations',
+        component: ViewReservationsComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['employee'] }
       }
     ])
   ],
