@@ -1,0 +1,20 @@
+button {
+    padding: 5px 10px;
+    color: white;
+    border-radius: 10px;
+    background: black;
+    border: 1px solid black;
+    text-decoration: none;
+    display: block;
+    margin: auto;
+    font-size: larger;
+    cursor: pointer;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    &.pay {
+        font-size: initial;
+        margin: 10px auto;
+    }
+}

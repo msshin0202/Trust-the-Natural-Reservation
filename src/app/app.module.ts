@@ -22,6 +22,8 @@ import { EmplandingComponent } from './components/emplanding/emplanding.componen
 import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.component';
 import { ListcustComponent } from './components/listcust/listcust.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StayedInComponent } from './components/stayed-in/stayed-in.component';
+import { CheckoutCheckinComponent } from './components/checkout-checkin/checkout-checkin.component';
 import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
@@ -42,12 +44,14 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
     CloginComponent,
     EloginComponent,
     EmplandingComponent,
+    StayedInComponent,
     EroomstatusComponent,
     ListcustComponent,
     SignupComponent,
     ViewDirtyRoomsComponent,
     CheckinComponent,
     UpdateProfileComponent,
+    CheckoutCheckinComponent,
     PopularRoomsComponent
   ],
   imports: [
@@ -109,27 +113,37 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
         path: 'signup',
         component: SignupComponent
       },
-
-    {
-      path: 'roomstatus',
-      component: EroomstatusComponent
-    },
-    {
-      path: 'checkedincust',
-      component: ListcustComponent
-    },{
-
+      {
+        path: 'display',
+        component: StayedInComponent
+      },
+      {
+        path: 'roomstatus',
+        component: EroomstatusComponent
+      },
+      {
+        path: 'checkedincust',
+        component: ListcustComponent
+      },
+      {
         path: 'view-dirty-rooms',
         component: ViewDirtyRoomsComponent
       },
       {
-<<<<<<< HEAD
         path: 'update-profile',
         component: UpdateProfileComponent
-=======
+      },
+      {
         path: 'popular-rooms',
         component: PopularRoomsComponent
->>>>>>> master
+      },
+      {
+        path: 'checkout-checkin',
+        component: CheckoutCheckinComponent
+      },
+      {
+        path: 'checkin',
+        component: CheckinComponent
       }
     ])
   ],

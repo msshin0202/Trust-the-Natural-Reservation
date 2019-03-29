@@ -8,15 +8,19 @@ import { EroomstatusService } from '../../services/eroomstatus.service';
   styleUrls: ['./emplanding.component.scss']
 })
 export class EmplandingComponent implements OnInit {
+  total = 0;
+  rooms = [];
+  phoneNumber = '';
 
   constructor(private router: Router, private route: ActivatedRoute, private EroomstatusService: EroomstatusService) { }
 
   ngOnInit() {
+    this.total = localStorage.getItem('total') === null ? 0 : +localStorage.getItem('total');
+    this.total = localStorage.getItem('rooms') === null ? [] : JSON.parse(localStorage.getItem('rooms'));
   }
-  // 
-  // getRoomStatus(){
-  //   console.log("emplanding.component");
-  //   this.EroomstatusService.getRoomStatus().subscribe(data => {
-  //     console.log(data);})
-  // }
+
+  ngOnDestroy() {
+    localStorage.removeItem('total');
+    localStorage.removeItem('rooms');
+  }
 }

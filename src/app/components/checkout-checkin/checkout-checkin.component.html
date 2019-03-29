@@ -1,0 +1,10 @@
+<form (submit)="checkOutCustomer($event)">
+    <h1>Checkout Customer</h1>
+    <input name="phoneNumber" type="text" id="phoneNumber" autocomplete="off" placeholder="Enter Phone Number">
+    <button type="submit">Check Out</button>
+</form>
+<form (submit)="checkInCustomer($event)">
+    <h1>Checkin Customer</h1>
+    <input name="reservationNumber" type="text" id="reservationNumber" autocomplete="off" placeholder="Enter Reservation Number" size="24">
+    <button type="submit">Check In</button>
+</form>
