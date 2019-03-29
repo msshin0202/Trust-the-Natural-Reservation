@@ -1,54 +1,54 @@
 <div class="divider">
-    <h1>Update Profile</h1>
+  <h1>Update Profile</h1>
 </div>
 
-<div class="divider"></div>
-  <div>
-    <p>
-      Email:
-      {{ email }}
-    </p>
-    <p>
+<div class="divider" style="width: 70%;"></div>
+<div class="container" style="width: 90%;">
+  <p>
+    Email:
+    {{ email }}
+  </p>
+  <p>
     First Name:
-      <input type="text" [(ngModel)]="firstName" required>
+    <input type="text" [(ngModel)]="firstName" required>
     </p>
     <p>
       Last Name:
       <input type="text" [(ngModel)]="lastName" required>
     </p>
-    <p>
-      Password: 
-      <input type="password" [(ngModel)]="password" required>
+      <p>
+        Password:
+        <input type="password" [(ngModel)]="password" required>
     </p>
-    <p>
-      Password Confirmation: 
-      <input type="password" [(ngModel)]="passwordConfirmation" required>
+        <p>
+          Password Confirmation:
+          <input type="password" [(ngModel)]="passwordConfirmation" required>
     </p>
-  </div>
-  <div *ngIf=isCustomer class="divider">
-    <p>Phone Number:
-      <input type="text" [(ngModel)]="phoneNumber" required>
+</div>
+<div *ngIf=isCustomer class="container" style="width: 90%; ">
+  <p>Phone Number:
+    <input type="text" [(ngModel)]="phoneNumber" required>
     </p>
-  </div>
-  <div *ngIf=isEmployee class="divider">
-    <p>Gender:
-      <select [(ngModel)]="gender">
+</div>
+<div *ngIf=isEmployee class="container" style="width: 90%; ">
+  <p>Gender:
+    <select [(ngModel)]="gender">
         <option value="0">Female</option>
         <option value="1">Male</option>
       </select>
-    </p>
-    <p>Role:
-      <select [(ngModel)]="role">
+  </p>
+  <p>Role:
+    <select [(ngModel)]="role">
         <option value="Manager">Manager</option>
         <option value="Supervisor">Supervisor</option>
         <option value="Receptionist">Receptionist</option>
         <option value="Maid">Maid</option>
       </select>
+  </p>
+  <p>Address:
+    <input type="text" [(ngModel)]="address" required>
     </p>
-    <p>Address:
-      <input type="text" [(ngModel)]="address" required>
-    </p>
-  </div>
-  <div class="divider">
-    <button (click)="submit()">Submit</button>
-  </div>
+</div>
+<div class="container" style="width: 50%; margin: auto;">
+  <button (click)="submit()" class="btn btn-dark">Submit</button>
+</div>
