@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   success: boolean = false;
   isEmployee: boolean = false;
   isCustomer: boolean = false;
+  hasVehicle: boolean = false;
   baseUrl = 'http://localhost:3000/api';
 
   selectedGender: string = "Female";
@@ -45,6 +46,8 @@ export class SignupComponent implements OnInit {
     const email = target.querySelector('#email').value;
     const password = target.querySelector('#password').value;
     const passwordConfirm = target.querySelector('#passwordConfirm').value;
+    const colour = target.querySelector('#colour').value;
+    const model = target.querySelector('#model').value;
     if (this.isEmployee) {
       const address = target.querySelector('#address').value;
       const gender = this.genderHash[this.selectedGender];
@@ -61,7 +64,7 @@ export class SignupComponent implements OnInit {
       } else if (this.isCustomer) {
       const phoneNumber = target.querySelector('#phoneNumber').value;
       this.signupService.submitCustomerSignUp(firstName, lastName, email, phoneNumber,
-        password, passwordConfirm).subscribe(data => {
+        password, passwordConfirm, colour, model).subscribe(data => {
         if (data.success) {
           this.router.navigate(['cust']);
           this.Auth.setUserType('customer');
@@ -81,7 +84,7 @@ export class SignupComponent implements OnInit {
 
   if(y.style.display = "none"){
     y.style.display = "block";
-  } 
+  }
 
   }
   customerSignup() {
@@ -92,5 +95,9 @@ export class SignupComponent implements OnInit {
   if(y.style.display = "none"){
     y.style.display = "block";
   }
+  }
+
+  vehicleSignup(){
+    this.hasVehicle = true;
   }
 }
