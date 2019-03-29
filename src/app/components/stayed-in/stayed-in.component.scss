@@ -1,19 +1,26 @@
-form {
-    display: block;
-    width: 300px;
-    height: 300px;
-    padding: 10px;
-    // box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);
-    margin: 50px auto;
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
 }
-h4 {
-    margin: 30px auto;
-}
-#check-in, #check-out {
+
+input[type='text'] {
     display: block;
     margin: 25px auto;
+    padding: 5px 10px;
 }
-[type="submit"] {
+
+.cardbox {
+    display: inline-block;
+    width: 33.33%;
+}
+
+.card {
+    display: block;
+    width: 75%;
+    margin: 20px auto;
+    padding: 15px;
+}
+
+button {
     padding: 5px 10px;
     color: white;
     border-radius: 10px;
@@ -24,17 +31,16 @@ h4 {
     margin: auto;
     font-size: larger;
     cursor: pointer;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    &.pay {
+        font-size: initial;
+        margin: 10px auto;
+    }
 }
-.cardbox {
-    display: inline-block;
-    width: 33.33%;
-}
-.card {
-    display: block;
-    width: 75%;
-    margin: 20px auto;
-    padding: 15px;
-}
+
 #snackbar {
     visibility: hidden;
     min-width: 250px;
@@ -53,8 +59,10 @@ h4 {
 
 #snackbar.show {
     visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    // -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    // animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
 }
 
 @-webkit-keyframes fadein {
