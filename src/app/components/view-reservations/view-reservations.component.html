@@ -8,7 +8,7 @@
   </p>
   <div *ngIf=isEmployee class="divider">
     <p>
-      <input type="text" [(ngModel)]="phoneNumber">
+      <input type="text" [(ngModel)]="phoneNumber" placeholder="Enter Phone Number">
       <button (click)="getReservedRooms()" type="submit">Check Reservation</button>
     </p>
   </div>
@@ -34,5 +34,5 @@
   </div>
   <div *ngIf=isCustomer>
     <button (click)="goBackToCustLanding()" type="submit">Go Back to Dashboard</button>
-  </div> 
+  </div>
 </div>
