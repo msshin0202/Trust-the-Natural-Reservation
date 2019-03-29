@@ -12,7 +12,7 @@ $checkOutDate = new DateTime($_POST['date']['checkOutDate']);
 $cr = 0;
 
 
-$sql = "SELECT Room.roomNumber, Room.numberOfBeds, Room.cleanliness, Room.price FROM Room WHERE Room.roomNumber NOT IN (SELECT DISTINCT rmb.roomNumber FROM Reservation_Made_By rmb WHERE checkOutDate >= '{$checkInDate->format('Y-m-d')}' AND checkInDate <= '{$checkOutDate->format('Y-m-d')}')";
+$sql = "SELECT Room.roomNumber, Room.numberOfBeds, Room.cleanliness, Room.price FROM Room WHERE Room.roomNumber NOT IN (SELECT DISTINCT rmb.roomNumber FROM Reservation_Made_By rmb WHERE checkOutDate > '{$checkInDate->format('Y-m-d')}' AND checkInDate <= '{$checkOutDate->format('Y-m-d')}')";
 
 if ($result = mysqli_query($con, $sql)) {
     while ($row = mysqli_fetch_assoc($result)) {

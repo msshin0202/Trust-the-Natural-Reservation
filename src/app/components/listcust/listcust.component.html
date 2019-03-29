@@ -48,7 +48,7 @@
   </form>
 </div>
 <div id="list" style="display: none;">
-  <div class="cardbox" *ngFor="let customer of customers" style="display:inline-block;min-width:calc(33.33% - 20px);margin:10px;padding:10px;box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);">
+  <div class="cardbox" *ngFor="let customer of customers">
     <div class="card">
       <p align="center">First Name: {{customer.firstName}}</p>
       <p align="center">Last Name: {{customer.lastName}}</p>

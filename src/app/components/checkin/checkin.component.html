@@ -33,12 +33,15 @@
   </div>
   <app-logout></app-logout>
 </nav>
-<h3>Customer has been successfully checked in!</h3>
+<h3>View Room Information to Complete Check-in</h3>
+<div>
+  <p style="font-size: 8px;margin: 0 auto 15px;width: fit-content;">*Check-in process will not be completed unless room information has been displayed.*</p>
+</div>
 <form (submit)="viewRoomInformation($event)">
   <button type="submit">View Room Information</button>
 </form>
 
-<div>
+<div class="container" style="width: 50%;">
   <div class="cardbox" *ngIf="roomInfo">
     <div class="card">
       <p>Room number: {{roomInfo.roomNumber}}</p>

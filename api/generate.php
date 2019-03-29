@@ -32,7 +32,13 @@ if ($result = mysqli_query($con, $sql)) {
         // create a bill with given user info
         $sql = "INSERT INTO Bill VALUES ({$bid}, {$amount}, '{$phoneNumber}')";
         if ($result = mysqli_query($con, $sql)) {
-            $net['id'] = $bid;
+            // update cleanliness status of the room
+            $sql = "UPDATE Room SET cleanliness=0 WHERE roomNumber={$roomNumber}";
+            if ($result = mysqli_query($con, $sql)) {
+                // success!
+                $net['id'] = $bid;
+                $net['amount'] = $amount;
+            }
         }
     }
 }

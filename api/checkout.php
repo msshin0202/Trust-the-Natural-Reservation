@@ -2,6 +2,7 @@
 
 require './connect.php';
 
+$net = [];
 $con = connect();
 
 $_POST = json_decode(file_get_contents('php://input'), true);
