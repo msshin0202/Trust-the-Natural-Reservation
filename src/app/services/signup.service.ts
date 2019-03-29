@@ -10,21 +10,21 @@ export class SignupService {
 
   constructor(private http: HttpClient) { }
 
-  submitEmployeeSignUp(firstName, lastName, email, 
+  submitEmployeeSignUp(firstName, lastName, email,
     password, passwordConfirm, gender, role, address) {
       let signupKind = "employee";
-      return this.http.post<any>(`${this.baseUrl}/signup`, { 
-        signupKind, firstName, lastName, email, 
+      return this.http.post<any>(`${this.baseUrl}/signup`, {
+        signupKind, firstName, lastName, email,
         password, passwordConfirm, gender, role, address
       }, { withCredentials: true });
     }
 
   submitCustomerSignUp(firstName, lastName, email, phoneNumber,
-    password, passwordConfirm) {
+    password, passwordConfirm, colour, model) {
       let signupKind = "customer";
-      return this.http.post<any>(`${this.baseUrl}/signup`, { 
-        signupKind, firstName, lastName, email, phoneNumber, 
-        password, passwordConfirm
+      return this.http.post<any>(`${this.baseUrl}/signup`, {
+        signupKind, firstName, lastName, email, phoneNumber,
+        password, passwordConfirm, colour, model
       }, { withCredentials: true });
     }
 }
