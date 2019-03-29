@@ -29,7 +29,6 @@ import { CheckinComponent } from './components/checkin/checkin.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
