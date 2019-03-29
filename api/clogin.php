@@ -9,6 +9,7 @@ const POST_PASSWORD_KEY = "password";
 const SESSION_USER_KEY = "user";
 const COOKIE_SESSION_ID_KEY = "sessionID";
 const SESSION_USER_TYPE_KEY = "userType";
+const SESSION_USER_CUSTOMER_PHONE_KEY = "phoneNumber";
 
 function login($email, $password)
 {
@@ -17,7 +18,7 @@ function login($email, $password)
     try {
         $conn = connect();
         $escapedEmail = $conn->real_escape_string($email);
-        $sql = "SELECT c.email, c.password FROM Customer c WHERE c.email LIKE '{$escapedEmail}'";
+        $sql = "SELECT c.email, c.password, c.phoneNumber FROM Customer c WHERE c.email LIKE '{$escapedEmail}'";
         $mysqliResult = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($mysqliResult);
         if ($row == null) {
@@ -26,6 +27,7 @@ function login($email, $password)
         } elseif ($password == $row[POST_PASSWORD_KEY]) {
             session_start();
             $_SESSION[SESSION_USER_KEY] = $email;
+            $_SESSION[SESSION_USER_CUSTOMER_PHONE_KEY] = $row["phoneNumber"];
             $_SESSION[SESSION_USER_TYPE_KEY] = 'customer';
             $loginResult[RESULT_SUCCESS_KEY] = true;
             $loginResult[RESULT_MESSAGE_KEY] = "Login Successful!";

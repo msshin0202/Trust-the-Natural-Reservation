@@ -28,7 +28,8 @@ import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirt
 import { CheckinComponent } from './components/checkin/checkin.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
-
+import { ViewReservationsComponent } from './components/view-reservations/view-reservations.component';
+import { ViewReservationsService } from './services/view-reservations.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
     SignupComponent,
     ViewDirtyRoomsComponent,
     CheckinComponent,
+    ViewReservationsComponent,
     UpdateProfileComponent,
     CheckoutCheckinComponent,
     PopularRoomsComponent
@@ -140,6 +142,12 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
         component: PopularRoomsComponent
       },
       {
+        path: 'view-reservations',
+        component: ViewReservationsComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer', 'employee'] }
+      },
+      {
         path: 'checkout-checkin',
         component: CheckoutCheckinComponent
       },
@@ -149,7 +157,7 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
       }
     ])
   ],
-  providers: [AuthService, CustUserService, AuthGuard],
+  providers: [AuthService, CustUserService, AuthGuard, ViewReservationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
