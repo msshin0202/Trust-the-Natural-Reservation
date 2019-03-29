@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-checkout-checkin',
@@ -8,7 +9,7 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class CheckoutCheckinComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private reservationService: ReservationService) { }
 
   ngOnInit() {
   }
@@ -29,12 +30,20 @@ export class CheckoutCheckinComponent implements OnInit {
     event.preventDefault();
     const target = event.target;
     const reservationNumber = target.querySelector('#reservationNumber').value;
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-          reservationNumber: reservationNumber
+    this.reservationService.hasReservation(reservationNumber).subscribe(data => {
+      console.log(data);
+      console.log(data.success);
+      if (data.success == true) {
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+              reservationNumber: reservationNumber
+          }
+        };
+        this.router.navigate(['/checkin'], navigationExtras);
+      } else {
+        window.alert("Reservation number is either empty or doesn't exist!");
       }
-    };
-    this.router.navigate(['/checkin'], navigationExtras);
+    })
   }
 
 }
