@@ -9,6 +9,7 @@ const POST_PASSWORD_KEY = "password";
 const SESSION_USER_KEY = "user";
 const COOKIE_SESSION_ID_KEY = "sessionID";
 const SESSION_USER_TYPE_KEY = "userType";
+const SESSION_USER_CUSTOMER_PHONE_KEY = "phoneNumber";
 
 function login($email, $password)
 {

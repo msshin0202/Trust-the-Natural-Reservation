@@ -24,4 +24,14 @@ export class RoomsService {
   getPopularRooms() {
     return this.http.post<any>(`${this.baseUrl}/popular-rooms`, {})
   }
+
+  getReservedRooms(phoneNumber: any, requestType: string) {
+    console.log(phoneNumber);
+    return this.http.post<any>(`${this.baseUrl}/reserved-rooms`, { phoneNumber, requestType }, { withCredentials: true });
+  }
+
+  cancelReservation(requestType: string, reservationNumber: any) {
+    console.log('right here', reservationNumber);
+    return this.http.post<any>(`${this.baseUrl}/reserved-rooms`, { requestType, reservationNumber }, { withCredentials: true });
+  }
 }

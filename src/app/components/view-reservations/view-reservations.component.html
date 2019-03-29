@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">Natural Reservation</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/employee">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/roomstatus">Room Status</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/pay">Pay Bill</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/popular-rooms">Trending Rooms</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/view-dirty-rooms">Dirty Rooms <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/checkedincust">Show Customers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/checkout-checkin">Check In/Out</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/update-profile">Update Profile</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/view-reservations">View Reservation</a>
+      </li>
+    </ul>
+  </div>
+  <app-logout></app-logout>
+</nav>
+
+<h1>View Your Reservations</h1>
+<div class="container"></div>
+<div>
+  <div class="container">
+    <div class="cardbox" style="display: block; margin: 20px auto; text-align: center;">
+      Reservation for User: {{ firstName }} {{ lastName }}
+    </div>
+    <div *ngIf=isEmployee class="container">
+      <p>
+        <input type="text" [(ngModel)]="phoneNumber" placeholder="Enter Phone Number" style="display: block; margin: 30px auto;">
+        <button (click)="getReservedRooms()" type="submit">Check Reservation</button>
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf=isCustomer class="divider">
+    <p>
+      <button (click)="getReservedRooms()" type="submit">Click Here to Check Reservation</button>
+    </p>
+  </div>
+  <div id="list">
+    <div class="cardbox" *ngFor="let res of reservations" style="display:inline-block;min-width:calc(33.33% - 20px);margin:10px;padding:10px;box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);">
+      <div class="card" id>
+        <p>Reservation Number: {{res.reservationNumber}}</p>
+        <p>Room Number: {{res.roomNumber}}</p>
+        <p>Check-in date: {{res.checkInDate}}</p>
+        <p>Check-out date: {{res.checkOutDate}}</p>
+        <p>Number of beds: {{res.numberOfBeds}}</p>
+        <button (click)="cancelReservation(res.reservationNumber)" type="submit" *ngIf=isEmployee>Cancel Reservation</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf=isEmployee>
+    <button (click)="goBackToEmpLanding()" type="submit">Go Back to Dashboard</button>
+  </div>
+  <div *ngIf=isCustomer>
+    <button (click)="goBackToCustLanding()" type="submit">Go Back to Dashboard</button>
+  </div>
+</div>
