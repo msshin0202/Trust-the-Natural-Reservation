@@ -39,11 +39,21 @@ export class PayComponent implements OnInit {
   creditCardPayment() {
     this.isCreditCard = true;
     this.isCash = false;
+    var y = document.getElementById("submitdiv");
+
+  if(y.style.display = "none"){
+    y.style.display = "block";
+  }
   }
 
   cashPayment() {
     this.isCash = true;
     this.isCreditCard = false;
+    var y = document.getElementById("submitdiv");
+
+  if(y.style.display = "none"){
+    y.style.display = "block";
+  }
   }
 
 }

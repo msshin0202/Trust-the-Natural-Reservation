@@ -1,9 +1,38 @@
-<h1>Room Status</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Natural Reservation</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/employee">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/roomstatus">Room Status <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/pay">Pay Bill</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/popular-rooms">Trending Rooms</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/view-dirty-rooms">Dirty Rooms</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/checkedincust">Show Customers</a>
+      </li>
+    </ul>
+  </div>
+  <app-logout></app-logout>
+</nav>
+<h1 style="text-align: center;">Room Status</h1>
 <div *ngFor="let item of rooms" style="display:inline-block;min-width:calc(33.33% - 20px);margin:10px;padding:10px;box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);">
-  <p>Room number: {{item.roomNumber}}</p>
-  <p>No. of beds: {{item.numberOfBeds}}</p>
-  <p>Price: ${{item.price}}</p>
-  <p>Available/Occupied: {{item.status}}</p>
-  <p>Cleanliness: {{item.cleanliness}}</p>
+  <p align="center">Room number: {{item.roomNumber}}</p>
+  <p align="center">No. of beds: {{item.numberOfBeds}}</p>
+  <p align="center">Price: ${{item.price}}</p>
+  <p align="center">Available/Occupied: {{item.status}}</p>
+  <p align="center">Cleanliness: {{item.cleanliness}}</p>
 
 </div>
