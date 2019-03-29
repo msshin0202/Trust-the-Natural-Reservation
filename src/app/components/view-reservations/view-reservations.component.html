@@ -41,12 +41,12 @@
 <div class="container"></div>
 <div>
   <div class="container">
-    <div class="cardbox" style="display: block; margin: auto; text-align: center;">
+    <div class="cardbox" style="display: block; margin: 20px auto; text-align: center;">
       Reservation for User: {{ firstName }} {{ lastName }}
     </div>
     <div *ngIf=isEmployee class="container">
       <p>
-        <input type="text" [(ngModel)]="phoneNumber" placeholder="Enter Phone Number" style="display: block; margin: auto;">
+        <input type="text" [(ngModel)]="phoneNumber" placeholder="Enter Phone Number" style="display: block; margin: 30px auto;">
         <button (click)="getReservedRooms()" type="submit">Check Reservation</button>
       </p>
     </div>
