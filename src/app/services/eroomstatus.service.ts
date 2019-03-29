@@ -11,7 +11,7 @@ interface myData {
   providedIn: 'root'
 })
 export class EroomstatusService {
- baseUrl = 'http://localhost:3000/api';
+ baseUrl = 'http://localhost/api';
   constructor(private http: HttpClient) { }
    rooms: [];
 

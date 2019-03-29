@@ -26,7 +26,7 @@ interface logoutStatus {
   providedIn: 'root'
 })
 export class CustUserService {
-  baseUrl = 'http://localhost:3000/api';
+  baseUrl = 'http://localhost/api';
 
   constructor(private http: HttpClient) { }
 
@@ -36,6 +36,10 @@ export class CustUserService {
 
   getUserInfo(phoneNumber) {
     return this.http.post<User>(`${this.baseUrl}/userinfo`, { phoneNumber });
+  }
+
+  getCustReservedAllRooms() {
+    return this.http.get<any>(`${this.baseUrl}/analyze`);
   }
 
   isLoggedIn(): Observable<isLoggedIn> {
