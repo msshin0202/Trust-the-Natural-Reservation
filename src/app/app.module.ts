@@ -30,6 +30,7 @@ import { UpdateProfileComponent } from './components/update-profile/update-profi
 import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
 import { ViewReservationsComponent } from './components/view-reservations/view-reservations.component';
 import { ViewReservationsService } from './services/view-reservations.service';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ViewReservationsService } from './services/view-reservations.service';
     ViewReservationsComponent,
     UpdateProfileComponent,
     CheckoutCheckinComponent,
-    PopularRoomsComponent
+    PopularRoomsComponent,
+    AnalyticsComponent
   ],
   imports: [
     BrowserModule,
@@ -154,6 +156,10 @@ import { ViewReservationsService } from './services/view-reservations.service';
       {
         path: 'checkin',
         component: CheckinComponent
+      },
+      {
+        path: 'analytics',
+        component: AnalyticsComponent
       }
     ])
   ],
