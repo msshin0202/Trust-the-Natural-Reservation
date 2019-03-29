@@ -27,7 +27,7 @@ function login($email, $password)
         } elseif ($password == $row[POST_PASSWORD_KEY]) {
             session_start();
             $_SESSION[SESSION_USER_KEY] = $email;
-            $_SESSION[SESSION_USER_CUSTOMER_PHONE_KEY] = $row["phoneNumber"];
+            $_SESSION['phoneNumber'] = $row['phoneNumber'];
             $_SESSION[SESSION_USER_TYPE_KEY] = 'customer';
             $loginResult[RESULT_SUCCESS_KEY] = true;
             $loginResult[RESULT_MESSAGE_KEY] = "Login Successful!";

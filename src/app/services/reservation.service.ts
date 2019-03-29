@@ -15,10 +15,10 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
 
   hasReservation(reservationNumber) {
-    return this.http.post<Response>(`${this.baseUrl}/find`, { reservationNumber })
+    return this.http.post<Response>(`${this.baseUrl}/find`, { reservationNumber }, { withCredentials: true })
   }
 
   makeReservation(params) {
-    return this.http.post<Response>(`${this.baseUrl}/reservation`, { params })
+    return this.http.post<Response>(`${this.baseUrl}/reservation`, { params }, { withCredentials: true })
   }
 }

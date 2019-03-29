@@ -64,4 +64,3 @@ if ($userType == "customer") {
 
 close($conn);
 echo json_encode($updateResult);
-?>
