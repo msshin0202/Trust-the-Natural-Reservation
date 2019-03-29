@@ -26,6 +26,7 @@ import { StayedInComponent } from './components/stayed-in/stayed-in.component';
 import { CheckoutCheckinComponent } from './components/checkout-checkin/checkout-checkin.component';
 import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
 
 
@@ -49,6 +50,7 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
     SignupComponent,
     ViewDirtyRoomsComponent,
     CheckinComponent,
+    UpdateProfileComponent,
     CheckoutCheckinComponent,
     PopularRoomsComponent
   ],
@@ -126,6 +128,12 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
       {
         path: 'view-dirty-rooms',
         component: ViewDirtyRoomsComponent
+      },
+      {
+        path: 'update-profile',
+        component: UpdateProfileComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer', 'employee'] }
       },
       {
         path: 'popular-rooms',
