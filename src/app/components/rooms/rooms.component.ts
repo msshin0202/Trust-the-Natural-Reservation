@@ -10,7 +10,6 @@ import { ReservationService } from 'src/app/services/reservation.service';
 })
 
 export class RoomsComponent implements OnInit {
-  baseUrl = 'http://localhost:3000/api';
   rooms = [];
   date = {};
         
@@ -37,6 +36,7 @@ export class RoomsComponent implements OnInit {
     this.date = date;
     this.roomsService.getAvailableRooms(date).subscribe(data => {
       this.rooms = data.data;
+      console.log(this.rooms);
       localStorage.removeItem('array');
       localStorage.setItem('array', JSON.stringify(this.rooms));
     });
