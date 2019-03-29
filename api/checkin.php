@@ -15,29 +15,28 @@ $success[RESULT_SUCCESS_KEY] = false;
 $success[RESULT_MESSAGE_KEY] = "something went wrong123";
 $finalResult = array();
 
-$reservationNumberQuery = "SELECT rmb.roomNumber, r.numberOfBeds, r.price, rmb.checkInDate, rmb.checkOutDate
+$reservationNumberQuery = "SELECT rmb.roomNumber, rmb.phoneNumber, r.numberOfBeds, r.price, rmb.checkInDate, rmb.checkOutDate
 FROM Reservation_Made_By rmb, Room r WHERE r.roomNumber = rmb.roomNumber AND rmb.reservationNumber = '{$reservationNumber}'";
 if ($result = mysqli_query($con, $reservationNumberQuery)) {
     while ($row = mysqli_fetch_assoc($result)) {
-      $checkIn = new DateTime($row['checkOutDate']);
-      $checkOut = new DateTime($row['checkInDate']);
-      $duration = ($checkIn->diff($checkOut))->format('%d');
-      $reservationExistsQuery = mysqli_num_rows($result);
-      if ($reservationExistsQuery >= 1){
-        $insertAgreementQuery = "INSERT INTO Creates_Hotel_Agreement VALUES('{$agreementNumber}', '{$reservationNumber}')";
-        mysqli_query($con, $insertAgreementQuery);
-        $insertStaysQuery = "INSERT INTO Stays VALUES('{$queryResult['rmb.roomNumber']}', '{$queryResult['phoneNumber']}')";
-        mysqli_query($con, $insertStaysQuery);
-        $success[RESULT_SUCCESS_KEY] = true;
-        $success[RESULT_MESSAGE_KEY] = "Successfully checkedin customer";
-        $finalResult['roomNumber'] = $row['roomNumber'];
-        $finalResult['numberOfBeds'] = $row['numberOfBeds'];
-        $finalResult['price'] = $row['price'];
-        $finalResult['duration'] = $duration;
-
-      } else {
-        $success[RESULT_MESSAGE_KEY] = "in else";
-      }
+        $checkIn = new DateTime($row['checkOutDate']);
+        $checkOut = new DateTime($row['checkInDate']);
+        $duration = ($checkIn->diff($checkOut))->format('%d');
+        $reservationExistsQuery = mysqli_num_rows($result);
+        if ($reservationExistsQuery >= 1) {
+            $insertAgreementQuery = "INSERT INTO Creates_Hotel_Agreement VALUES('{$agreementNumber}', '{$reservationNumber}')";
+            mysqli_query($con, $insertAgreementQuery);
+            $insertStaysQuery = "INSERT INTO Stays VALUES('{$row['roomNumber']}', '{$row['phoneNumber']}')";
+            mysqli_query($con, $insertStaysQuery);
+            $success[RESULT_SUCCESS_KEY] = true;
+            $success[RESULT_MESSAGE_KEY] = "Successfully checkedin customer";
+            $finalResult['roomNumber'] = $row['roomNumber'];
+            $finalResult['numberOfBeds'] = $row['numberOfBeds'];
+            $finalResult['price'] = $row['price'];
+            $finalResult['duration'] = $duration;
+        } else {
+            $success[RESULT_MESSAGE_KEY] = "in else";
+        }
     }
 }
 echo json_encode($finalResult);
