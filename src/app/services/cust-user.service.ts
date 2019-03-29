@@ -26,7 +26,7 @@ interface logoutStatus {
   providedIn: 'root'
 })
 export class CustUserService {
-  baseUrl = 'http://localhost/api';
+  baseUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 

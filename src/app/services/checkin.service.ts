@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CheckinService {
 
-  baseUrl = 'http://localhost/api';
+  baseUrl = 'http://localhost:3000/api';
 
 
   constructor(private http: HttpClient) { }
