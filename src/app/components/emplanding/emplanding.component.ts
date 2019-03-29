@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-emplanding',
@@ -11,7 +11,7 @@ export class EmplandingComponent implements OnInit {
   rooms = [];
   phoneNumber = '';
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
     this.total = localStorage.getItem('total') === null ? 0 : +localStorage.getItem('total');
@@ -21,18 +21,6 @@ export class EmplandingComponent implements OnInit {
   ngOnDestroy() {
     localStorage.removeItem('total');
     localStorage.removeItem('rooms');
-  }
-
-  checkOutCustomer(event) {
-    event.preventDefault();
-    const target = event.target;
-    const phoneNumber = target.querySelector('#phoneNumber').value;
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-          phoneNumber: phoneNumber
-      }
-    };
-    this.router.navigate(['/display'], navigationExtras);
   }
 
 }

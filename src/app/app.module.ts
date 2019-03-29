@@ -26,6 +26,7 @@ import { StayedInComponent } from './components/stayed-in/stayed-in.component';
 import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
 import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
+import { CheckoutCheckinComponent } from './components/checkout-checkin/checkout-checkin.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
     SignupComponent,
     ViewDirtyRoomsComponent,
     CheckinComponent,
-    PopularRoomsComponent
+    PopularRoomsComponent,
+    CheckoutCheckinComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +112,7 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
         path: 'signup',
         component: SignupComponent
       },
-      { 
+      {
         path: 'display',
         component: StayedInComponent
       },
@@ -129,6 +131,14 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
       {
         path: 'popular-rooms',
         component: PopularRoomsComponent
+      },
+      {
+        path: 'checkout-checkin',
+        component: CheckoutCheckinComponent
+      },
+      {
+        path: 'checkin',
+        component: CheckinComponent
       }
     ])
   ],
