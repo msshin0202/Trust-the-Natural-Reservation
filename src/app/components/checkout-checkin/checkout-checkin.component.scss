@@ -1,0 +1,84 @@
+h1 {
+    font-size: 48px;
+    text-align: center;
+}
+
+h2 {
+    font-size:  8px;
+    text-align: center;
+}
+
+input[type='text'] {
+    display: block;
+    margin: 25px auto;
+    padding: 5px 10px;
+}
+
+form {
+  padding: 100px;
+}
+
+button {
+    padding: 5px 10px;
+    color: white;
+    border-radius: 10px;
+    background: black;
+    border: 1px solid black;
+    text-decoration: none;
+    display: block;
+    margin: auto;
+    font-size: larger;
+    cursor: pointer;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    &.pay {
+        font-size: initial;
+        margin: 10px auto;
+    }
+}
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    // -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    // animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
