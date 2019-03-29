@@ -49,7 +49,7 @@ export class SignupComponent implements OnInit {
       const address = target.querySelector('#address').value;
       const gender = this.genderHash[this.selectedGender];
       const role = this.selectedRole;
-      this.signupService.submitEmployeeSignUp(firstName, lastName, email, 
+      this.signupService.submitEmployeeSignUp(firstName, lastName, email,
         password, passwordConfirm, gender, role, address).subscribe(data => {
         if (data.success) {
           this.router.navigate(['employee']);
@@ -61,7 +61,7 @@ export class SignupComponent implements OnInit {
       } else if (this.isCustomer) {
       const phoneNumber = target.querySelector('#phoneNumber').value;
       this.signupService.submitCustomerSignUp(firstName, lastName, email, phoneNumber,
-        password, passwordConfirm).subscribe(data => { 
+        password, passwordConfirm).subscribe(data => {
         if (data.success) {
           this.router.navigate(['cust']);
           this.Auth.setUserType('customer');
@@ -76,9 +76,21 @@ export class SignupComponent implements OnInit {
   employeeSignup() {
     this.isEmployee = true;
     this.isCustomer = false;
+
+    var y = document.getElementById("submitdiv");
+
+  if(y.style.display = "none"){
+    y.style.display = "block";
+  } 
+
   }
   customerSignup() {
     this.isCustomer = true;
     this.isEmployee = false;
+    var y = document.getElementById("submitdiv");
+
+  if(y.style.display = "none"){
+    y.style.display = "block";
+  }
   }
 }
