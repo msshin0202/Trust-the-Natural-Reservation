@@ -18,10 +18,6 @@ session_start();
 $email = $_SESSION[SESSION_USER_KEY];
 $userType = $_SESSION[SESSION_USER_TYPE_KEY];
 
-echo $email;
-echo $userType;
-
-
 $_POST = json_decode(file_get_contents('php://input'), true);
 $firstName = $_POST["firstName"];
 $lastName = $_POST["lastName"];
@@ -35,18 +31,18 @@ if ($userType == "customer") {
     $row = mysqli_fetch_assoc($mysqliResult);
     if ($row != NULL && $escapedEmail != $row["email"]) {
         $updateResult[RESULT_SUCCESS_KEY] = false;
-        $updateResult[RESULT_MESSAGE_KEY] = "Existing Customer Phone Number. Please Try Again";   
+        $updateResult[RESULT_MESSAGE_KEY] = "Existing Customer Phone Number. Please Try Again";
     } else {
         $updateSql = "UPDATE Customer SET phoneNumber = '{$phoneNumber}', firstName = '{$firstName}', lastName = '{$lastName}', password = '{$password}' WHERE email LIKE '{$escapedEmail}'";
         if (($conn->query($updateSql) === TRUE)) {
             $updateResult[RESULT_SUCCESS_KEY] = true;
-            $updateResult[RESULT_MESSAGE_KEY] = "Update is Successful!";  
+            $updateResult[RESULT_MESSAGE_KEY] = "Update is Successful!";
         } else if (strlen($phoneNumber) !== 10) {
             $updateResult[RESULT_SUCCESS_KEY] = false;
-            $updateResult[RESULT_MESSAGE_KEY] = "Please Enter a Valid Phone Number!";  
+            $updateResult[RESULT_MESSAGE_KEY] = "Please Enter a Valid Phone Number!";
         } else {
             $updateResult[RESULT_SUCCESS_KEY] = false;
-            $updateResult[RESULT_MESSAGE_KEY] = "Update is Unsuccessful!";  
+            $updateResult[RESULT_MESSAGE_KEY] = "Update is Unsuccessful!";
         }
     }
 } else if ($userType == "employee") {
@@ -59,10 +55,10 @@ if ($userType == "customer") {
     $updateSql = "UPDATE Employee SET gender = {$gender}, firstName = '{$firstName}', lastName = '{$lastName}', password = '{$password}', role = '{$role}', address =  '{$address}' WHERE email LIKE '{$escapedEmail}'";
     if (($conn->query($updateSql) === TRUE)) {
         $updateResult[RESULT_SUCCESS_KEY] = true;
-        $updateResult[RESULT_MESSAGE_KEY] = "Update is Successful!";  
+        $updateResult[RESULT_MESSAGE_KEY] = "Update is Successful!";
     } else {
         $updateResult[RESULT_SUCCESS_KEY] = false;
-        $updateResult[RESULT_MESSAGE_KEY] = "Update is Unsuccessful!";  
+        $updateResult[RESULT_MESSAGE_KEY] = "Update is Unsuccessful!";
     }
 }
 
