@@ -18,6 +18,10 @@ session_start();
 $email = $_SESSION[SESSION_USER_KEY];
 $userType = $_SESSION[SESSION_USER_TYPE_KEY];
 
+echo $email;
+echo $userType;
+
+
 $_POST = json_decode(file_get_contents('php://input'), true);
 $firstName = $_POST["firstName"];
 $lastName = $_POST["lastName"];
@@ -64,3 +68,4 @@ if ($userType == "customer") {
 
 close($conn);
 echo json_encode($updateResult);
+?>

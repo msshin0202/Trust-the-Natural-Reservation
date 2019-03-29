@@ -131,7 +131,9 @@ import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.
       },
       {
         path: 'update-profile',
-        component: UpdateProfileComponent
+        component: UpdateProfileComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer', 'employee'] }
       },
       {
         path: 'popular-rooms',
