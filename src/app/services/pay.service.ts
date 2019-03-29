@@ -12,7 +12,7 @@ interface payData {
 })
 export class PayService {
 
-  baseUrl = 'http://localhost:3000/api';
+  baseUrl = 'http://localhost/api';
 
   constructor(private router: Router, private http: HttpClient) { }
 

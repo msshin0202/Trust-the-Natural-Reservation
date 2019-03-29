@@ -24,7 +24,7 @@ export class StayedInComponent implements OnInit {
   total = 0;
   rooms = [];
   phoneNumber = '';
-  storage = ['phoneNumber'];
+  storage = ['total', 'rooms', 'phoneNumber'];
   user: User = {
     phoneNumber: '',
     fname: '',
@@ -44,7 +44,8 @@ export class StayedInComponent implements OnInit {
   ngOnInit() {
     this.total = localStorage.getItem('total') === null ? 0 : +localStorage.getItem('total');
     this.rooms = localStorage.getItem('rooms') === null ? [] : JSON.parse(localStorage.getItem('rooms'));
-    this.phoneNumber = localStorage.getItem('phoneNumber') === null ? '' : localStorage.getItem('phoneNumber');
+    this.phoneNumber = localStorage.getItem('phoneNumber') === null ? this.phoneNumber : localStorage.getItem('phoneNumber');
+    // console.log(this.phoneNumber);
     this.displayRooms();
     this.getUserInfo();
   }

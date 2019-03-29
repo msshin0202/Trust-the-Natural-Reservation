@@ -4,7 +4,7 @@
     <button class="pay" (click)="hideSnackbar($event)">Pay Later</button>
 </div>
 
-<h3>Welcome back, {{user.fname}} {{user.lname}}! Here's the detailed info about your staying.</h3>
+<h3>Detailed information about customer: {{user.fname}} {{user.lname}}</h3>
 <div id="rooms">
     <div class="cardbox" *ngFor="let item of rooms">
       <div class="card">
@@ -15,6 +15,6 @@
     </div>
 </div>
 
-<form (submit)="checkOutCustomer($event)">
+<form (submit)="viewBalance($event)">
     <button (click)="showSnackbar($event)" name="checkout" type="submit">View Balance</button>
 </form>
