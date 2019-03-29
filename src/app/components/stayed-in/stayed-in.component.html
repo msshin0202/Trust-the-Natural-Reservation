@@ -1,4 +1,4 @@
-<div id="snackbar">The total comes to ${{total}}
+<div id="snackbar">The total comes to $<span *ngIf="bill">{{bill.amount}}</span><span *ngIf="!bill">{{total}}</span>
   <div *ngIf="bill">Your bill ID is {{bill.id}}</div>
     <button class="pay"><a href="pay">Pay Now</a></button>
     <button class="pay" (click)="hideSnackbar($event)">Pay Later</button>
@@ -15,6 +15,4 @@
     </div>
 </div>
 
-<form (submit)="viewBalance($event)">
-    <button (click)="showSnackbar($event)" name="checkout" type="submit">View Balance</button>
-</form>
+<button (click)="showSnackbar($event)" name="checkout" type="submit">View Balance</button>

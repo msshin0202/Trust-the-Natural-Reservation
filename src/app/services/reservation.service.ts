@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 
-interface myData {
+interface Response {
   success: boolean,
   message: string
 }
@@ -14,7 +14,11 @@ export class ReservationService {
 
   constructor(private http: HttpClient) { }
 
+  hasReservation(reservationNumber) {
+    return this.http.post<Response>(`${this.baseUrl}/find`, { reservationNumber })
+  }
+
   makeReservation(params) {
-    return this.http.post<myData>(`${this.baseUrl}/reservation`, { params })
+    return this.http.post<Response>(`${this.baseUrl}/reservation`, { params })
   }
 }

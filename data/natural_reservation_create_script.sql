@@ -29,7 +29,7 @@ CREATE TABLE Stays
 ( roomNumber INT NOT NULL,
   phoneNumber VARCHAR(10) NOT NULL,
   PRIMARY KEY (roomNumber, phoneNumber),
-  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE,
+  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (roomNumber) REFERENCES Room (roomNumber) ON DELETE CASCADE );
 
 CREATE TABLE Bill
@@ -37,7 +37,7 @@ CREATE TABLE Bill
   amount INT,
   phoneNumber VARCHAR(10) NOT NULL,
   PRIMARY KEY (bid),
-  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE );
+  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE ON UPDATE CASCADE );
 
 CREATE TABLE Transaction
 ( tid INT NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE Employee_Assigned_to_Room
 
 CREATE TABLE Creates_Hotel_Agreement
 ( agreementNumber INT NOT NULL,
-  reservationNumber INT,
+  reservationNumber INT UNIQUE NOT NULL,
   PRIMARY KEY (agreementNumber),
   FOREIGN KEY (reservationNumber) REFERENCES Reservation_Made_By(reservationNumber) ON DELETE CASCADE );
 
@@ -91,4 +91,4 @@ CREATE TABLE Vehicle
   model VARCHAR (10),
   phoneNumber VARCHAR(10),
   PRIMARY KEY (colour, model, phoneNumber),
-  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE );
+  FOREIGN KEY (phoneNumber) REFERENCES Customer(phoneNumber) ON DELETE CASCADE ON UPDATE CASCADE );
