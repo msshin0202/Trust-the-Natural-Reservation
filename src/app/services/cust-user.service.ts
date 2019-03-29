@@ -38,6 +38,10 @@ export class CustUserService {
     return this.http.post<User>(`${this.baseUrl}/userinfo`, { phoneNumber });
   }
 
+  getCustReservedAllRooms() {
+    return this.http.get<any>(`${this.baseUrl}/analyze`);
+  }
+
   isLoggedIn(): Observable<isLoggedIn> {
     return this.http.get<isLoggedIn>(`${this.baseUrl}/isloggedin`);
   }
