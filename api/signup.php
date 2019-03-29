@@ -42,6 +42,7 @@ function employeeSignup($firstName, $lastName, $email, $password, $passwordConfi
                 $signupResult[RESULT_EMAIL] = $escapedEmail;
                 session_start();
                 $_SESSION[SESSION_USER_TYPE_KEY] = 'employee';
+                $_SESSION[SESSION_USER_KEY] = $escapedEmail;
             } else {
                 $signupResult[RESULT_SUCCESS_KEY] = false;
                 $signupResult[RESULT_MESSAGE_KEY] = "Error occurred during signup. Please try again.";    
@@ -88,6 +89,7 @@ function customerSignup($firstName, $lastName, $email, $phoneNumber, $password, 
                 $signupResult[RESULT_EMAIL] = $escapedEmail;
                 session_start();
                 $_SESSION[SESSION_USER_TYPE_KEY] = 'customer';
+                $_SESSION[SESSION_USER_KEY] = $escapedEmail;
             } else {
                 $signupResult[RESULT_SUCCESS_KEY] = false;
                 $signupResult[RESULT_MESSAGE_KEY] = "Error occurred during signup. Please try again.";    
@@ -120,3 +122,4 @@ if (isset($_POST) && !empty($_POST)) {
 
 setcookie(COOKIE_SESSION_ID_KEY, session_id(), 0, '/');
 echo json_encode($result);
+?>

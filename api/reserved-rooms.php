@@ -11,11 +11,6 @@ const COOKIE_SESSION_ID_KEY = "sessionID";
 const SESSION_USER_TYPE_KEY = "userType";
 const SESSION_USER_CUSTOMER_PHONE_KEY = "phoneNumber";
 
-session_id($_COOKIE[COOKIE_SESSION_ID_KEY]);
-session_start();
-
-$_POST = json_decode(file_get_contents('php://input'), true);
-
 function getCustomerReservations ($phoneNumber) {
     $conn;
     $reservations = array();
@@ -68,16 +63,18 @@ function cancelCustomerReservations ($reservationNumber) {
     return $reservations;
 }
 
+session_id($_COOKIE[COOKIE_SESSION_ID_KEY]);
+session_start();
+
 $userType = $_SESSION[SESSION_USER_TYPE_KEY];
+$email = $_SESSION["user"];
+$_POST = json_decode(file_get_contents('php://input'), true);
+
 $requestType = $_POST["requestType"];
 
 if ($requestType == "view") {
     if ($userType == "employee") {
         $phoneNumber = $_POST['phoneNumber'];
-        $result = getCustomerReservations($phoneNumber);
-        echo json_encode($result);
-    } else if ($userType == "customer"){
-        $phoneNumber = $_SESSION[SESSION_USER_CUSTOMER_PHONE_KEY];
         $result = getCustomerReservations($phoneNumber);
         echo json_encode($result);
     } else {
@@ -86,8 +83,14 @@ if ($requestType == "view") {
         echo json_encode($result);
     }
 } else if ($requestType == "cancel") {
-    $result = cancelCustomerReservations($_POST["reservationNumber"]);
-    echo json_encode($result);
+    if ($_SESSION[SESSION_USER_TYPE_KEY] == "employee") {
+        $result = cancelCustomerReservations($_POST["reservationNumber"]);
+        echo json_encode($result);
+    } else {
+        $result[RESULT_SUCCESS_KEY] = false;
+        $result[RESULT_MESSAGE_KEY] = "Error occurred. Please try again!";
+        echo json_encode($result);
+    }
 }
 
 

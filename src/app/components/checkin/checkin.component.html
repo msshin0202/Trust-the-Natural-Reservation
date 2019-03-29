@@ -1,19 +1,15 @@
-<div class="divider">
-    <h3>Select payment method</h3>
-  </div>
+<h3>Customer has been successfully checked in!</h3>
+<form (submit)="viewRoomInformation($event)">
+    <button type="submit">View Room Information</button>
+</form>
 
-<div class="divider"></div>
-  <form (submit)="onSubmit($event)">
-    <div>
-        <p>
-          Enter Customer's Reservation ID:
-          <input type="text" id="reserveID" placeholder="1234">
-        </p>
+<div>
+  <div class="cardbox" *ngIf="roomInfo">
+    <div class="card">
+      <p>Room number: {{roomInfo.roomNumber}}</p>
+      <p>No. of beds: {{roomInfo.numberOfBeds}}</p>
+      <p>Price: {{roomInfo.price}}</p>
+      <p>Duration: {{roomInfo.duration}}</p>
     </div>
-
-  <div class="divider">
-    <button type="submit" name="submit">Submit</button>
   </div>
-  </form>
-
-  
+</div>

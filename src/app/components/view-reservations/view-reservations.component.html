@@ -12,7 +12,12 @@
       <button (click)="getReservedRooms()" type="submit">Check Reservation</button>
     </p>
   </div>
-  <div id="list" >
+  <div *ngIf=isCustomer class="divider">
+    <p>
+      <button (click)="getReservedRooms()" type="submit">Click Here to Check Reservation</button>
+    </p>
+  </div>
+  <div id="list">
     <div class="cardbox" *ngFor="let res of reservations" style="display:inline-block;min-width:calc(33.33% - 20px);margin:10px;padding:10px;box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25);">
       <div class="card" id>
         <p>Reservation Number: {{res.reservationNumber}}</p>

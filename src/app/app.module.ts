@@ -22,11 +22,14 @@ import { EmplandingComponent } from './components/emplanding/emplanding.componen
 import { EroomstatusComponent } from './components/eroomstatus/eroomstatus.component';
 import { ListcustComponent } from './components/listcust/listcust.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StayedInComponent } from './components/stayed-in/stayed-in.component';
+import { CheckoutCheckinComponent } from './components/checkout-checkin/checkout-checkin.component';
 import { ViewDirtyRoomsComponent } from './components/view-dirty-rooms/view-dirty-rooms.component';
 import { CheckinComponent } from './components/checkin/checkin.component';
+import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { PopularRoomsComponent } from './components/popular-rooms/popular-rooms.component';
 import { ViewReservationsComponent } from './components/view-reservations/view-reservations.component';
-
+import { ViewReservationsService } from './services/view-reservations.service';
 
 @NgModule({
   declarations: [
@@ -42,13 +45,16 @@ import { ViewReservationsComponent } from './components/view-reservations/view-r
     CloginComponent,
     EloginComponent,
     EmplandingComponent,
+    StayedInComponent,
     EroomstatusComponent,
     ListcustComponent,
     SignupComponent,
     ViewDirtyRoomsComponent,
     CheckinComponent,
-    PopularRoomsComponent,
-    ViewReservationsComponent
+    ViewReservationsComponent,
+    UpdateProfileComponent,
+    CheckoutCheckinComponent,
+    PopularRoomsComponent
   ],
   imports: [
     BrowserModule,
@@ -110,15 +116,26 @@ import { ViewReservationsComponent } from './components/view-reservations/view-r
         component: SignupComponent
       },
       {
+        path: 'display',
+        component: StayedInComponent
+      },
+      {
         path: 'roomstatus',
         component: EroomstatusComponent
       },
       {
         path: 'checkedincust',
         component: ListcustComponent
-      },{
+      },
+      {
         path: 'view-dirty-rooms',
         component: ViewDirtyRoomsComponent
+      },
+      {
+        path: 'update-profile',
+        component: UpdateProfileComponent,
+        canActivate: [AuthGuard],
+        data: { userTypeAllowed: ['customer', 'employee'] }
       },
       {
         path: 'popular-rooms',
@@ -128,11 +145,19 @@ import { ViewReservationsComponent } from './components/view-reservations/view-r
         path: 'view-reservations',
         component: ViewReservationsComponent,
         canActivate: [AuthGuard],
-        data: { userTypeAllowed: ['employee'] }
+        data: { userTypeAllowed: ['customer', 'employee'] }
+      },
+      {
+        path: 'checkout-checkin',
+        component: CheckoutCheckinComponent
+      },
+      {
+        path: 'checkin',
+        component: CheckinComponent
       }
     ])
   ],
-  providers: [AuthService, CustUserService, AuthGuard],
+  providers: [AuthService, CustUserService, AuthGuard, ViewReservationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

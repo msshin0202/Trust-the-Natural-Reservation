@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomsService } from '../../services/rooms.service';
-// import { UpdateService } from '../../services/update.service';
+import { UpdateService } from '../../services/update.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,33 +18,29 @@ export class ViewReservationsComponent implements OnInit {
   isEmployee: boolean;
   isCustomer: boolean;
   requestType: string;
-  constructor(private roomsService: RoomsService, private router: Router) {}
+  constructor(private updateService: UpdateService, private roomsService: RoomsService, private router: Router) {}
 
   ngOnInit() {
-    // this.updateService.getProfile().subscribe(data => {
-    //   if (data.success) {
-    //     if (data.userType === "customer") {
-    //       this.isCustomer = true;
-    //       this.isEmployee = false;
-    //     } else if (data.userType === "employee") {
-    //       this.phoneNumber = data.content.phoneNumber;
-    //       this.isEmployee = true;
-    //       this.isCustomer = false;
-    //     }
-    //   }
-    // });
-    this.isCustomer = false;
-    this.isEmployee = true;
+    this.updateService.getProfile().subscribe(data => {
+      if (data.success) {
+        if (data.userType === "employee") {
+          this.phoneNumber = data.content.phoneNumber;
+          this.isEmployee = true;
+          this.isCustomer = false;
+        }
+      } 
+    })
   }
 
   getReservedRooms(): void {
     event.preventDefault(); 
     this.requestType = "view";
+    console.log(this.phoneNumber);
+    console.log(this.phoneNumber, this.requestType);
     this.roomsService.getReservedRooms(this.phoneNumber, this.requestType).subscribe(data => {
       this.firstName = data.firstName;
       this.lastName = data.lastName;
       this.reservations = data.content;
-      console.log("reservations", this.reservations);
     });
   }
 

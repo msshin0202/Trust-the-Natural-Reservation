@@ -1,0 +1,20 @@
+<div id="snackbar">The total comes to ${{total}}
+  <div *ngIf="bill">Your bill ID is {{bill.id}}</div>
+    <button class="pay"><a href="pay">Pay Now</a></button>
+    <button class="pay" (click)="hideSnackbar($event)">Pay Later</button>
+</div>
+
+<h3>Detailed information about customer: {{user.fname}} {{user.lname}}</h3>
+<div id="rooms">
+    <div class="cardbox" *ngFor="let item of rooms">
+      <div class="card">
+        <p>Room number: {{item.roomNumber}}</p>
+        <p>${{item.price}}</p>
+        <button (click)="generateBill($event, item.roomNumber)">Generate Bill</button>
+      </div>
+    </div>
+</div>
+
+<form (submit)="viewBalance($event)">
+    <button (click)="showSnackbar($event)" name="checkout" type="submit">View Balance</button>
+</form>
