@@ -1,5 +1,6 @@
-# Cpsc304front
+# Trust the Natural Reservation
 
+This project was designed to meet the requirements of a term project for CPSC 304 at UBC. All Rights Reserved.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
 
 ## Development server
